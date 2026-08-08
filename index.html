@@ -35,6 +35,88 @@ a{text-decoration:none;color:inherit}.top{height:38px;background:#100d0b;color:#
 
 @media(max-width:850px){.nav{height:70px}.nav-links{display:none}.logo-wrap{top:5px}.top{font-size:9px}.hero{grid-template-columns:1fr}.hero-image{min-height:430px;order:2}.hero-copy{min-height:470px;order:1;padding:35px}.cat-head{font-size:24px}.cat-grid{grid-template-columns:1fr 1fr}.story{grid-template-columns:1fr}.story-art{min-height:350px}.product-grid{grid-template-columns:1fr}.values{grid-template-columns:1fr}.footer{display:block}.footer>*+*{margin-top:10px}.lookbook-stage{padding:35px}.look-bangle{right:5%;width:130px;height:130px}.look-glass{right:30%;}.look-plate{right:2%;width:140px;height:140px}}
 @media(max-width:520px){.cat-head{grid-template-columns:1fr 1fr;gap:8px}.cat-grid{grid-template-columns:1fr}.cat{height:220px}.hero-copy h1{font-size:57px}.brand{font-size:26px}.top-right{display:none}}
+
+/* V5.1 — subtle readability refinement */
+.brand{font-size:34px!important;letter-spacing:.19em!important}
+.tag{font-size:8.5px!important;letter-spacing:.27em!important}
+.nav-links{font-size:15px!important}
+.top{font-size:11.5px!important}
+.footer{font-size:12px!important}
+.footer strong{font-size:13px}
+
+/* V5.1 — subtle bangle group in hero, behind/alongside the glassware */
+.hero-image .subtle-bangles{
+  position:absolute;
+  right:13%;
+  bottom:72px;
+  width:128px;
+  height:128px;
+  z-index:3;
+  transform:rotateX(65deg) rotateZ(-10deg);
+  opacity:.88;
+  filter:drop-shadow(0 14px 18px rgba(70,45,25,.18));
+}
+.hero-image .subtle-bangles i{
+  position:absolute;
+  inset:0;
+  border-radius:50%;
+  border:9px solid rgba(226,190,130,.92);
+  box-shadow:inset 0 0 5px rgba(105,67,30,.16);
+}
+.hero-image .subtle-bangles i:nth-child(2){inset:10px;border-color:rgba(193,143,74,.9)}
+.hero-image .subtle-bangles i:nth-child(3){inset:21px;border-color:rgba(244,222,181,.94)}
+.hero-image .subtle-bangles i:nth-child(4){inset:32px;border-color:rgba(177,126,61,.88)}
+.hero-image .subtle-bangles i:nth-child(5){inset:43px;border-color:rgba(239,211,161,.92)}
+@media(max-width:850px){
+  .brand{font-size:29px!important}
+  .nav-links{font-size:14px!important}
+  .hero-image .subtle-bangles{right:7%;bottom:48px;width:100px;height:100px}
+}
+
+
+/* NIVARIKA V5.2 — compact premium header/footer */
+.nav{height:72px!important}
+.nav-inner{width:92%!important}
+.logo-wrap{top:4px!important}
+.logo-mark{width:39px!important;height:39px!important}
+.brand{font-size:31px!important;letter-spacing:.20em!important}
+.tag{font-size:7.5px!important;letter-spacing:.24em!important}
+.nav-links{gap:30px!important;font-size:15px!important}
+.nav-contact{padding:8px 14px!important;font-size:11px!important}
+.top{height:28px!important;padding:0 4%!important;font-size:10px!important}
+.top-right{gap:15px!important}
+
+/* cleaner hero top rhythm after compact navigation */
+.hero{min-height:550px!important}
+.hero-image{min-height:550px!important}
+.hero-copy h1{font-size:clamp(55px,5.8vw,80px)!important}
+.hero-copy p{font-size:20px!important}
+
+/* compact premium footer */
+.footer{
+  padding:25px 6%!important;
+  display:grid!important;
+  grid-template-columns:1fr auto!important;
+  gap:18px!important;
+  align-items:center!important;
+  font-size:12.5px!important;
+  line-height:1.5!important;
+  border-top:1px solid #493827!important;
+}
+.footer-brand{gap:12px!important}
+.footer-nivarika{font:600 23px "Cormorant Garamond";letter-spacing:.17em;color:#e0c18d}
+.footer strong{font-size:13px;color:#e0c18d}
+@media(max-width:850px){
+  .nav{height:66px!important}
+  .brand{font-size:27px!important}
+  .logo-mark{width:35px!important;height:35px!important}
+  .nav-contact{display:none}
+  .hero{min-height:auto!important}
+  .hero-image{min-height:430px!important}
+  .footer{display:block!important;padding:22px 6%!important}
+  .footer>div+div{margin-top:9px}
+}
+
 </style>
 </head>
 <body>
@@ -46,7 +128,8 @@ a{text-decoration:none;color:inherit}.top{height:38px;background:#100d0b;color:#
 </div></nav>
 
 <section class="hero">
-<div class="hero-image"><div class="glass-set"><div class="tray"></div><div class="glass g1"></div><div class="glass g2"></div><div class="glass g3"></div><div class="glass g4"></div><div class="vase"></div><div class="flower"></div></div></div>
+<div class="hero-image"><div class="glass-set"><div class="tray"></div><div class="glass g1"></div><div class="glass g2"></div><div class="glass g3"></div><div class="glass g4"></div><div class="vase"></div><div class="flower"></div>
+</div></div>
 <div class="hero-copy"><div class="hero-copy-inner"><div class="hero-emblem"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="42" fill="none" stroke="currentColor" stroke-width="2"/><path d="M50 22C43 29 42 36 49 42c6 5 13 6 16 14 3 8-4 16-12 20-9 5-18 1-20-6" fill="none" stroke="currentColor" stroke-width="4"/><path d="M23 72Q50 61 77 72M21 78Q50 67 79 78" fill="none" stroke="currentColor" stroke-width="2"/></svg></div><div class="eyebrow">NIVARIKA</div><h1>Crafted Elegance<br>for Your Home</h1><p>Explore exquisite glassware, dinnerware, beautiful bangles, and curated home décor.</p><a class="hero-btn" href="#collections">Explore Collections</a></div></div>
 </section>
 
