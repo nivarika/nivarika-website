@@ -10,7 +10,7 @@
 :root{--gold:#c79a56;--gold2:#e1bd83;--brown:#6c4930;--cream:#f8f0e5;--dark:#17120f;--line:#d9c6ae}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--cream);color:#4c3020;font-family:Montserrat,Arial,sans-serif}
 a{text-decoration:none;color:inherit}.top{height:38px;background:#100d0b;color:#d8c5aa;display:flex;justify-content:space-between;align-items:center;padding:0 4.5%;font-size:11px;letter-spacing:.08em}
-.top-right{display:flex;gap:20px}.wa-mini{color:#d9e8d4}
+.top-right{display:flex;gap:20px}.wa-mini{letter-spacing:.15em;font:500 18px "Cormorant Garamond",serif!important}.wa-mini b{color:#c6dfbd}
 .nav{height:92px;background:#17120f;color:#e0c99e;display:flex;align-items:center;justify-content:center;position:sticky;top:0;z-index:20;border-bottom:1px solid #4b3827}
 .nav-inner{width:91%;display:flex;align-items:center;justify-content:space-between}.nav-links{display:flex;gap:34px;font:500 14px "Cormorant Garamond",serif;letter-spacing:.08em}.nav-links a:hover{color:#fff}
 .logo-wrap{position:absolute;left:50%;transform:translateX(-50%);top:8px;text-align:center}.logo-mark{width:48px;height:48px;color:var(--gold);margin:auto}.logo-mark svg{width:100%;height:100%}.brand{font:600 31px/1 "Cormorant Garamond";letter-spacing:.17em}.tag{font-size:8px;letter-spacing:.24em;color:#b89a6b;margin-top:4px}
@@ -117,15 +117,125 @@ a{text-decoration:none;color:inherit}.top{height:38px;background:#100d0b;color:#
   .footer>div+div{margin-top:9px}
 }
 
+
+/* NIVARIKA V5.3 — centered logo lockup and balanced navigation */
+.nav{
+  height:76px!important;
+  position:sticky!important;
+  top:0!important;
+  z-index:20!important;
+}
+.nav-inner{
+  width:92%!important;
+  max-width:1380px!important;
+  height:100%!important;
+  margin:0 auto!important;
+  display:grid!important;
+  grid-template-columns:1fr auto 1fr!important;
+  align-items:center!important;
+  position:relative!important;
+}
+.nav-side{
+  display:flex!important;
+  align-items:center!important;
+  gap:30px!important;
+  font:500 18px "Cormorant Garamond",serif!important;
+  letter-spacing:.08em!important;
+  color:#e0c99e!important;
+}
+.nav-left{justify-content:flex-start!important}
+.nav-right{justify-content:flex-end!important}
+.nav-side a{white-space:nowrap!important}
+.nav-side a:hover{color:#fff!important}
+
+.logo-wrap{
+  position:static!important;
+  transform:none!important;
+  top:auto!important;
+  left:auto!important;
+  display:grid!important;
+  grid-template-columns:42px auto!important;
+  grid-template-rows:auto auto!important;
+  column-gap:9px!important;
+  align-items:center!important;
+  justify-self:center!important;
+  text-align:left!important;
+  color:#e0c99e!important;
+  min-width:178px!important;
+}
+.logo-mark{
+  width:42px!important;
+  height:42px!important;
+  grid-row:1 / span 2!important;
+  color:#c79a56!important;
+}
+.brand{
+  font-size:31px!important;
+  line-height:.95!important;
+  letter-spacing:.18em!important;
+  white-space:nowrap!important;
+}
+.tag{
+  display:block!important;
+  margin-top:4px!important;
+  font-size:8px!important;
+  line-height:1!important;
+  letter-spacing:.24em!important;
+  color:#c3a476!important;
+  white-space:nowrap!important;
+}
+.top{height:28px!important}
+
+@media(max-width:850px){
+  .nav{height:68px!important}
+  .nav-inner{grid-template-columns:1fr auto 1fr!important;width:94%!important}
+  .nav-side{gap:10px!important;font-size:12px!important}
+  .nav-side a:nth-child(2){display:none!important}
+  .logo-wrap{grid-template-columns:34px auto!important;min-width:142px!important;column-gap:7px!important}
+  .logo-mark{width:34px!important;height:34px!important}
+  .brand{font-size:25px!important}
+  .tag{font-size:6.5px!important;letter-spacing:.18em!important}
+}
+@media(max-width:520px){
+  .nav-side{font-size:10px!important}
+  .logo-wrap{min-width:122px!important}
+  .brand{font-size:22px!important}
+  .tag{font-size:5.5px!important}
+}
+
 </style>
 </head>
 <body>
-<div class="top"><div>✦ CURATED LIVING · MADE BEAUTIFUL</div><div class="top-right"><span>NIVARIKA.IN</span><span class="wa-mini">● WhatsApp: +91 XXXXX XXXXX</span></div></div>
-<nav class="nav"><div class="nav-inner">
-<div class="nav-links"><a href="#collections">Glassware</a><a href="#collections">Dinnerware</a></div>
-<div class="logo-wrap"><div class="logo-mark"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="42" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M50 22C43 29 42 36 49 42c6 5 13 6 16 14 3 8-4 16-12 20-9 5-18 1-20-6" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M50 22c0-4 4-6 7-3s0 7-4 8" fill="currentColor"/><path d="M31 61c7-7 14-7 19-2s12 5 19-1" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><path d="M23 72Q50 61 77 72M21 78Q50 67 79 78M27 83Q50 74 73 83" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></div><div class="brand">NIVARIKA</div><div class="tag">CRAFTED ELEGANCE</div></div>
-<div class="nav-links"><a href="#collections">Bangles</a><a href="#story">Living</a></div>
-</div></nav>
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-side nav-left">
+      <a href="#collections">Glassware</a>
+      <a href="#collections">Dinnerware</a>
+      <a href="#collections">Bangles</a>
+      <a href="#story">Living</a>
+    </div>
+
+    <a class="logo-wrap" href="#" aria-label="NIVARIKA home">
+      <div class="logo-mark">
+        <svg viewBox="0 0 100 100" aria-hidden="true">
+          <circle cx="50" cy="50" r="42" fill="none" stroke="currentColor" stroke-width="2.2"/>
+          <path d="M50 22C43 29 42 36 49 42c6 5 13 6 16 14 3 8-4 16-12 20-9 5-18 1-20-6"
+                fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+          <path d="M50 22c0-4 4-6 7-3s0 7-4 8" fill="currentColor"/>
+          <path d="M31 61c7-7 14-7 19-2s12 5 19-1"
+                fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M23 72Q50 61 77 72M21 78Q50 67 79 78M27 83Q50 74 73 83"
+                fill="none" stroke="currentColor" stroke-width="1.6"/>
+        </svg>
+      </div>
+      <span class="brand">NIVARIKA</span>
+      <span class="tag">CRAFTED ELEGANCE FOR YOUR HOME</span>
+    </a>
+
+    <div class="nav-side nav-right">
+    </div>
+  </div>
+</nav>
 
 <section class="hero">
 <div class="hero-image"><div class="glass-set"><div class="tray"></div><div class="glass g1"></div><div class="glass g2"></div><div class="glass g3"></div><div class="glass g4"></div><div class="vase"></div><div class="flower"></div>
@@ -144,11 +254,11 @@ a{text-decoration:none;color:inherit}.top{height:38px;background:#100d0b;color:#
 <section class="products" id="products"><h2>Signature Pieces</h2><div class="product-grid"><article class="product"><div class="p-photo p1"><div class="p-bangle"></div></div><div class="p-info"><small>ADORN · BANGLES</small><h3>Ivory Gold Stack</h3><div class="p-info-row"><b>₹499</b><button class="ask" onclick="wa('Ivory Gold Stack')">Ask on WhatsApp</button></div></div></article><article class="product"><div class="p-photo p2"><div class="p-glass"></div></div><div class="p-info"><small>TABLE · GLASSWARE</small><h3>Crystal Tumbler Set</h3><div class="p-info-row"><b>₹799</b><button class="ask" onclick="wa('Crystal Tumbler Set')">Ask on WhatsApp</button></div></div></article><article class="product"><div class="p-photo p3"><div class="p-plate"></div></div><div class="p-info"><small>DINING · DINNERWARE</small><h3>Sandstone Plate Set</h3><div class="p-info-row"><b>₹1,299</b><button class="ask" onclick="wa('Sandstone Plate Set')">Ask on WhatsApp</button></div></div></article></div></section>
 
 <section class="newsletter"><div class="eyebrow">STAY CONNECTED</div><h2>Something beautiful is coming.</h2><p>Join the NIVARIKA list for new collections, early access and special offers.</p><form class="form" onsubmit="event.preventDefault();alert('Thank you for joining NIVARIKA.');"><input type="email" placeholder="Your email address" required><button>JOIN →</button></form></section>
-<footer class="footer"><div>© 2026 NIVARIKA. All rights reserved.</div><div>NIVARIKA.IN · Crafted for everyday living · WhatsApp: +91 XXXXX XXXXX</div></footer>
-<a class="float-wa" href="https://wa.me/91XXXXXXXXXX" target="_blank">◉</a>
+<footer class="footer"><div>© 2026 NIVARIKA. All rights reserved.</div><div>NIVARIKA.IN · Crafted Elegance for your home · WhatsApp: +91 99112 92210</div></footer>
+<a class="float-wa" href="https://wa.me/919911292110" target="_blank">◉</a>
 <script>
 const moods={festive:["FESTIVE GLOW","A little sparkle for celebrations.","Statement bangles, luminous glassware and warm table accents designed for memorable evenings.",""],minimal:["QUIET MINIMAL","Less, but beautifully considered.","Soft forms, calm colours and timeless pieces that make everyday spaces feel effortlessly refined."," minimal"],heritage:["MODERN HERITAGE","Tradition, with a contemporary eye.","Inspired by Indian craft and glassmaking heritage, reimagined for today's homes and celebrations."," heritage"]};
 document.querySelectorAll('.mood').forEach(b=>b.onclick=()=>{document.querySelectorAll('.mood').forEach(x=>x.classList.remove('active'));b.classList.add('active');let m=moods[b.dataset.mood],s=document.getElementById('stage');s.className='lookbook-stage'+m[3];ml.textContent=m[0];mt.textContent=m[1];mp.textContent=m[2]});
-function wa(p){window.open('https://wa.me/91XXXXXXXXXX?text='+encodeURIComponent('Hello NIVARIKA, I am interested in '+p),'_blank')}
+function wa(p){window.open('https://wa.me/919911292210?text='+encodeURIComponent('Hello NIVARIKA, I am interested in '+p),'_blank')}
 </script>
 </body></html>
