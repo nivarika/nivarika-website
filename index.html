@@ -10,7 +10,7 @@
 :root{--gold:#c79a56;--gold2:#e1bd83;--brown:#6c4930;--cream:#f8f0e5;--dark:#17120f;--line:#d9c6ae}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--cream);color:#4c3020;font-family:Montserrat,Arial,sans-serif}
 a{text-decoration:none;color:inherit}.top{height:38px;background:#100d0b;color:#d8c5aa;display:flex;justify-content:space-between;align-items:center;padding:0 4.5%;font-size:11px;letter-spacing:.08em}
-.top-right{display:flex;gap:20px}.wa-mini{letter-spacing:.15em;font:500 18px "Cormorant Garamond",serif!important}.wa-mini b{color:#c6dfbd}
+.top-right{display:flex;gap:20px}.wa-mini{color:#d9e8d4}
 .nav{height:92px;background:#17120f;color:#e0c99e;display:flex;align-items:center;justify-content:center;position:sticky;top:0;z-index:20;border-bottom:1px solid #4b3827}
 .nav-inner{width:91%;display:flex;align-items:center;justify-content:space-between}.nav-links{display:flex;gap:34px;font:500 14px "Cormorant Garamond",serif;letter-spacing:.08em}.nav-links a:hover{color:#fff}
 .logo-wrap{position:absolute;left:50%;transform:translateX(-50%);top:8px;text-align:center}.logo-mark{width:48px;height:48px;color:var(--gold);margin:auto}.logo-mark svg{width:100%;height:100%}.brand{font:600 31px/1 "Cormorant Garamond";letter-spacing:.17em}.tag{font-size:8px;letter-spacing:.24em;color:#b89a6b;margin-top:4px}
@@ -139,7 +139,7 @@ a{text-decoration:none;color:inherit}.top{height:38px;background:#100d0b;color:#
   display:flex!important;
   align-items:center!important;
   gap:30px!important;
-  font:500 18px "Cormorant Garamond",serif!important;
+  font:500 15px "Cormorant Garamond",serif!important;
   letter-spacing:.08em!important;
   color:#e0c99e!important;
 }
@@ -203,16 +203,67 @@ a{text-decoration:none;color:inherit}.top{height:38px;background:#100d0b;color:#
   .tag{font-size:5.5px!important}
 }
 
+
+html,body{overflow-x:hidden!important;width:100%!important}
+*,*::before,*::after{box-sizing:border-box!important}
+img,svg,video{max-width:100%!important}
+@media(max-width:850px){
+  .top{height:25px!important;padding:0 14px!important;font-size:9px!important;white-space:nowrap!important;overflow:hidden!important}
+  .top-right{display:none!important}
+  .nav{height:64px!important}
+  .nav-inner{width:100%!important;padding:0 14px!important;grid-template-columns:1fr auto 1fr!important;gap:6px!important}
+  .nav-side{gap:8px!important;font-size:11px!important;letter-spacing:.04em!important}
+  .nav-side a{max-width:70px!important;overflow:hidden!important;text-overflow:ellipsis!important;white-space:nowrap!important}
+  .logo-wrap{min-width:0!important;grid-template-columns:30px auto!important;column-gap:6px!important}
+  .logo-mark{width:30px!important;height:30px!important}
+  .brand{font-size:21px!important;letter-spacing:.14em!important}
+  .tag{font-size:5.5px!important;letter-spacing:.14em!important;margin-top:3px!important}
+  .hero{display:flex!important;flex-direction:column!important;min-height:0!important;padding:34px 18px 0!important}
+  .hero-copy{width:100%!important;max-width:100%!important;padding:0!important;text-align:center!important;order:1!important}
+  .hero-copy h1{font-size:48px!important;line-height:.94!important;margin:0 auto 14px!important;max-width:360px!important}
+  .hero-copy p{font-size:17px!important;line-height:1.5!important;max-width:330px!important;margin:0 auto!important}
+  .hero-image{order:2!important;width:100%!important;min-height:360px!important;height:360px!important;margin:10px auto 0!important;overflow:hidden!important}
+  .section{padding:55px 18px!important;overflow:hidden!important}
+  .section-head{display:block!important;margin-bottom:28px!important}
+  .section-head h2{font-size:38px!important;line-height:1!important}
+  .section-head p{font-size:15px!important;line-height:1.55!important;margin-top:10px!important}
+  .collection-grid{display:grid!important;grid-template-columns:1fr 1fr!important;gap:12px!important}
+  .collection-card{min-width:0!important;width:100%!important}
+  .collection-card h3{font-size:20px!important}
+  .collection-card p{font-size:12px!important;line-height:1.4!important}
+  .story{display:flex!important;flex-direction:column!important;padding:55px 18px!important;gap:30px!important;overflow:hidden!important}
+  .story-image,.story-copy{width:100%!important;min-width:0!important}
+  .story-copy h2{font-size:40px!important;line-height:1!important}
+  .story-copy p{font-size:15px!important;line-height:1.65!important}
+  .btn,.cta{min-height:44px!important;padding:11px 18px!important;font-size:12px!important}
+  .style-tabs,.filters{display:flex!important;flex-wrap:wrap!important;gap:8px!important}
+  .footer{display:block!important;padding:28px 18px!important;text-align:center!important;overflow:hidden!important}
+  .footer-brand{justify-content:center!important;flex-wrap:wrap!important}
+  .footer>div+div{margin-top:10px!important}
+}
+@media(max-width:480px){
+  .nav-side{font-size:9.5px!important}
+  .nav-side a{max-width:58px!important}
+  .nav-inner{padding:0 10px!important}
+  .brand{font-size:19px!important}
+  .tag{font-size:5px!important}
+  .hero{padding-top:28px!important}
+  .hero-copy h1{font-size:42px!important}
+  .hero-copy p{font-size:16px!important}
+  .hero-image{height:315px!important;min-height:315px!important}
+  .collection-grid{grid-template-columns:1fr!important;gap:18px!important}
+  .section-head h2,.story-copy h2{font-size:34px!important}
+}
+
 </style>
 </head>
 <body>
+<div class="top"><div>✦ CURATED LIVING · MADE BEAUTIFUL</div><div class="top-right"><span>NIVARIKA.IN</span><span class="wa-mini">● WhatsApp: +91 XXXXX XXXXX</span></div></div>
 <nav class="nav">
   <div class="nav-inner">
     <div class="nav-side nav-left">
       <a href="#collections">Glassware</a>
       <a href="#collections">Dinnerware</a>
-      <a href="#collections">Bangles</a>
-      <a href="#story">Living</a>
     </div>
 
     <a class="logo-wrap" href="#" aria-label="NIVARIKA home">
@@ -229,10 +280,12 @@ a{text-decoration:none;color:inherit}.top{height:38px;background:#100d0b;color:#
         </svg>
       </div>
       <span class="brand">NIVARIKA</span>
-      <span class="tag">CRAFTED ELEGANCE FOR YOUR HOME</span>
+      <span class="tag">CRAFTED ELEGANCE</span>
     </a>
 
     <div class="nav-side nav-right">
+      <a href="#collections">Bangles</a>
+      <a href="#story">Living</a>
     </div>
   </div>
 </nav>
@@ -254,11 +307,11 @@ a{text-decoration:none;color:inherit}.top{height:38px;background:#100d0b;color:#
 <section class="products" id="products"><h2>Signature Pieces</h2><div class="product-grid"><article class="product"><div class="p-photo p1"><div class="p-bangle"></div></div><div class="p-info"><small>ADORN · BANGLES</small><h3>Ivory Gold Stack</h3><div class="p-info-row"><b>₹499</b><button class="ask" onclick="wa('Ivory Gold Stack')">Ask on WhatsApp</button></div></div></article><article class="product"><div class="p-photo p2"><div class="p-glass"></div></div><div class="p-info"><small>TABLE · GLASSWARE</small><h3>Crystal Tumbler Set</h3><div class="p-info-row"><b>₹799</b><button class="ask" onclick="wa('Crystal Tumbler Set')">Ask on WhatsApp</button></div></div></article><article class="product"><div class="p-photo p3"><div class="p-plate"></div></div><div class="p-info"><small>DINING · DINNERWARE</small><h3>Sandstone Plate Set</h3><div class="p-info-row"><b>₹1,299</b><button class="ask" onclick="wa('Sandstone Plate Set')">Ask on WhatsApp</button></div></div></article></div></section>
 
 <section class="newsletter"><div class="eyebrow">STAY CONNECTED</div><h2>Something beautiful is coming.</h2><p>Join the NIVARIKA list for new collections, early access and special offers.</p><form class="form" onsubmit="event.preventDefault();alert('Thank you for joining NIVARIKA.');"><input type="email" placeholder="Your email address" required><button>JOIN →</button></form></section>
-<footer class="footer"><div>© 2026 NIVARIKA. All rights reserved.</div><div>NIVARIKA.IN · Crafted Elegance for your home · WhatsApp: +91 99112 92210</div></footer>
-<a class="float-wa" href="https://wa.me/919911292110" target="_blank">◉</a>
+<footer class="footer"><div>© 2026 NIVARIKA. All rights reserved.</div><div>NIVARIKA.IN · Crafted for everyday living · WhatsApp: +91 XXXXX XXXXX</div></footer>
+<a class="float-wa" href="https://wa.me/91XXXXXXXXXX" target="_blank">◉</a>
 <script>
 const moods={festive:["FESTIVE GLOW","A little sparkle for celebrations.","Statement bangles, luminous glassware and warm table accents designed for memorable evenings.",""],minimal:["QUIET MINIMAL","Less, but beautifully considered.","Soft forms, calm colours and timeless pieces that make everyday spaces feel effortlessly refined."," minimal"],heritage:["MODERN HERITAGE","Tradition, with a contemporary eye.","Inspired by Indian craft and glassmaking heritage, reimagined for today's homes and celebrations."," heritage"]};
 document.querySelectorAll('.mood').forEach(b=>b.onclick=()=>{document.querySelectorAll('.mood').forEach(x=>x.classList.remove('active'));b.classList.add('active');let m=moods[b.dataset.mood],s=document.getElementById('stage');s.className='lookbook-stage'+m[3];ml.textContent=m[0];mt.textContent=m[1];mp.textContent=m[2]});
-function wa(p){window.open('https://wa.me/919911292210?text='+encodeURIComponent('Hello NIVARIKA, I am interested in '+p),'_blank')}
+function wa(p){window.open('https://wa.me/91XXXXXXXXXX?text='+encodeURIComponent('Hello NIVARIKA, I am interested in '+p),'_blank')}
 </script>
 </body></html>
