@@ -5,361 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Nivarika — Crafted Elegance for Your Home</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Marcellus&family=EB+Garamond:ital@0;1&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --ink:#181209;
-    --ink-soft:#2b2015;
-    --cream:#f7f0e3;
-    --cream-2:#efe4d0;
-    --parchment:#fbf6ec;
-    --gold:#b6893f;
-    --gold-bright:#d9ac5c;
-    --gold-deep:#7c5a26;
-    --rose:#c99d8f;
-    --line: rgba(182,137,63,0.35);
-  }
-  *{box-sizing:border-box; margin:0; padding:0;}
-  html{scroll-behavior:smooth;}
-  body{
-    background:var(--parchment);
-    color:var(--ink);
-    font-family:'EB Garamond', serif;
-    font-size:17px;
-    line-height:1.6;
-    overflow-x:hidden;
-  }
-  h1,h2,h3, .display{
-    font-family:'Cormorant Garamond', serif;
-    font-weight:500;
-    color:var(--ink);
-    letter-spacing:0.01em;
-  }
-  .eyebrow{
-    font-family:'Marcellus', serif;
-    font-size:0.72rem;
-    letter-spacing:0.32em;
-    text-transform:uppercase;
-    color:var(--gold-deep);
-  }
-  a{color:inherit; text-decoration:none;}
-  img{max-width:100%; display:block;}
-  .wrap{max-width:1220px; margin:0 auto; padding:0 40px;}
-
-  /* ---------- top bar ---------- */
-  .topbar{
-    background:var(--ink);
-    color:var(--gold-bright);
-    font-family:'Marcellus', serif;
-    font-size:0.72rem;
-    letter-spacing:0.08em;
-  }
-  .topbar .wrap{
-    display:flex; justify-content:space-between; align-items:center;
-    padding:7px 40px;
-    color:rgba(217,172,92,0.75);
-  }
-  .topbar span{display:flex; align-items:center; gap:8px;}
-
-  /* ---------- header ---------- */
-  header.main{
-    background:var(--ink);
-    border-bottom:1px solid rgba(182,137,63,0.25);
-    position:sticky; top:0; z-index:50;
-  }
-  .navrow{
-    display:grid;
-    grid-template-columns:1fr auto 1fr;
-    align-items:center;
-    padding:14px 40px;
-    gap:24px;
-  }
-  .navlinks{
-    display:flex; gap:38px;
-    font-family:'Marcellus', serif;
-    font-size:0.82rem;
-    letter-spacing:0.14em;
-    text-transform:uppercase;
-    color:var(--cream-2);
-  }
-  .navlinks a{position:relative; padding-bottom:4px; transition:color .25s;}
-  .navlinks a:hover{color:var(--gold-bright);}
-  .navlinks a::after{
-    content:""; position:absolute; left:0; bottom:0; height:1px; width:0;
-    background:var(--gold-bright); transition:width .3s;
-  }
-  .navlinks a:hover::after{width:100%;}
-  .navlinks.right{justify-content:flex-end;}
-
-  .brandmark{text-align:center;}
-  .brandmark svg{margin:0 auto 6px;}
-  .brandmark .name{
-    font-family:'Cormorant Garamond', serif;
-    font-size:1.9rem;
-    letter-spacing:0.28em;
-    color:var(--gold-bright);
-  }
-  .brandmark .tagline{
-    font-family:'Marcellus', serif;
-    font-size:0.58rem;
-    letter-spacing:0.36em;
-    color:rgba(217,172,92,0.55);
-    text-transform:uppercase;
-    margin-top:2px;
-  }
-
-  /* ---------- hero ---------- */
-  .hero{
-    position:relative;
-    background:
-      radial-gradient(ellipse at 18% 20%, rgba(217,172,92,0.16), transparent 55%),
-      linear-gradient(120deg, #efe6d3 0%, #f7f0e3 45%, #ffffff 100%);
-    /*padding:56px 0 64px;*/
-    overflow:hidden;
-  }
-  .hero .wrap{
-    display:grid;
-    grid-template-columns:1.05fr 0.95fr;
-    align-items:center;
-    gap:40px;
-  }
-  .hero-art{position:relative; height:460px;}
-  .hero-copy{position:relative; z-index:2;}
-  .hero-copy .eyebrow{display:inline-flex; align-items:center; gap:12px; margin-bottom:14px;}
-  .hero-copy .eyebrow::before{content:""; width:34px; height:1px; background:var(--gold);}
-  .hero-copy h1{
-    font-size:3.2rem;
-    line-height:1.08;
-    margin-bottom:18px;
-    font-weight:500;
-  }
-  .hero-copy h1 em{font-style:italic; color:var(--gold-deep);}
-  .hero-copy p.lede{
-    font-size:1.05rem;
-    color:#5a4a35;
-    max-width:440px;
-    margin-bottom:24px;
-  }
-  .btn{
-    display:inline-flex; align-items:center; gap:12px;
-    font-family:'Marcellus', serif;
-    font-size:0.8rem;
-    letter-spacing:0.16em;
-    text-transform:uppercase;
-    padding:13px 28px;
-    border:1px solid var(--gold-deep);
-    color:var(--ink);
-    background:transparent;
-    cursor:pointer;
-    transition:all .35s ease;
-  }
-  .btn:hover{background:var(--ink); color:var(--gold-bright); border-color:var(--ink);}
-  .btn.dark{border-color:var(--gold-bright); color:var(--gold-bright);}
-  .btn.dark:hover{background:var(--gold-bright); color:var(--ink);}
-
-  /* ---------- categories ---------- */
-  .categories{padding:60px 0 44px; background:var(--parchment);}
-  .sec-head{text-align:center; margin-bottom:36px;}
-  .sec-head .eyebrow{display:block; margin-bottom:12px;}
-  .sec-head h2{font-size:2.4rem;}
-  .cat-grid{
-    display:grid;
-    grid-template-columns:repeat(4, 1fr);
-    gap:2px;
-    background:var(--line);
-    border:1px solid var(--line);
-  }
-  .cat-card{
-    background:var(--parchment);
-    text-align:center;
-    position:relative;
-    transition:background .35s ease;
-    cursor:pointer;
-    display:flex;
-    flex-direction:column;
-    color:inherit;
-  }
-  a.cat-card{text-decoration:none;}
-  .cat-card:hover{background:var(--cream-2);}
-
-  /* floating whatsapp button */
-  .wa-float{
-    position:fixed;
-    right:26px; bottom:26px;
-    z-index:100;
-    width:50px; height:50px;
-    border-radius:50%;
-    background:#25D366;
-    display:flex; align-items:center; justify-content:center;
-    box-shadow:0 8px 22px rgba(0,0,0,0.28);
-    transition:transform .3s ease;
-  }
-  .wa-float:hover{transform:scale(1.08);}
-  .wa-float svg{width:24px; height:24px;}
-
-  .cat-media{
-    position:relative;
-    width:100%;
-    aspect-ratio:1/1;
-    overflow:hidden;
-    background:linear-gradient(135deg, #e9dcc0, #cba85f 60%, #8a6a34);
-  }
-  .cat-media img{
-    width:100%; height:100%; object-fit:cover;
-    display:block;
-    transition:transform .6s ease;
-  }
-  .cat-card:hover .cat-media img{transform:scale(1.06);}
-  .cat-media::after{
-    content:"";
-    position:absolute; inset:0;
-    background:linear-gradient(180deg, rgba(24,18,9,0) 55%, rgba(24,18,9,0.35) 100%);
-    pointer-events:none;
-  }
-
-  .badge-sale{
-    position:absolute; top:14px; left:14px; z-index:2;
-    background:var(--ink);
-    color:var(--gold-bright);
-    font-family:'Marcellus', serif;
-    font-size:0.65rem;
-    letter-spacing:0.08em;
-    text-transform:uppercase;
-    padding:6px 12px;
-    border:1px solid rgba(217,172,92,0.5);
-  }
-
-  .icon-frame{
-    position:absolute; z-index:2;
-    top:14px; right:14px;
-    width:38px; height:38px;
-    border-radius:50%;
-    border:1px solid rgba(247,240,227,0.6);
-    background:rgba(24,18,9,0.35);
-    display:flex; align-items:center; justify-content:center;
-    backdrop-filter:blur(2px);
-  }
-  .icon-frame svg{width:20px; height:20px;}
-
-  .cat-body{padding:16px 20px 20px; flex:1; display:flex; flex-direction:column;}
-  .cat-card h3{font-size:1.2rem; margin-bottom:3px; letter-spacing:0.02em;}
-  .cat-card .sub{
-    font-family:'Marcellus', serif;
-    font-size:0.7rem;
-    letter-spacing:0.14em;
-    text-transform:uppercase;
-    color:var(--gold-deep);
-    margin-bottom:16px;
-  }
-  .price-row{
-    margin-top:auto;
-    display:flex; align-items:baseline; justify-content:center; gap:10px;
-    font-family:'Marcellus', serif;
-  }
-  .price-now{font-size:1.05rem; color:var(--ink);}
-  .price-was{
-    font-size:0.85rem;
-    color:#8a7a63;
-    text-decoration:line-through;
-    text-decoration-color:#b6893f;
-  }
-  .price-off{
-    font-size:0.7rem;
-    color:#a8482f;
-    letter-spacing:0.04em;
-  }
-
-  /* ---------- story ---------- */
-  .story{padding:0px 0; background:var(--cream-2); position:relative;}
-  /* .story{padding:64px 0; background:var(--cream-2); position:relative;} */
-  .story .wrap{
-    display:grid;
-    grid-template-columns:0.9fr 1.1fr;
-    gap:70px;
-    align-items:center;
-  }
-  .story h2{font-size:2.3rem; margin-bottom:14px;}
-  .story p{color:#5a4a35; max-width:460px; margin-bottom:22px;}
-  .story-art{
-    position:relative; height:420px;
-    display:flex; align-items:center; justify-content:center;
-  }
-
-  /* ---------- mood section ---------- */
-  .mood{
-    background:var(--ink);
-    color:var(--cream);
-    padding:16px 0;
-    text-align:center;
-  }
-  .mood .eyebrow{color:var(--gold-bright);}
-  .mood h2{color:var(--cream); font-size:2.2rem; margin:10px 0 8px;}
-  .mood p{color:rgba(247,240,227,0.55); margin-bottom:30px;}
-  .mood-pills{display:flex; justify-content:center; gap:20px; flex-wrap:wrap;}
-  .pill{
-    font-family:'Marcellus', serif;
-    font-size:0.85rem;
-    letter-spacing:0.1em;
-    padding:16px 32px;
-    border:1px solid rgba(217,172,92,0.4);
-    border-radius:40px;
-    display:flex; align-items:center; gap:12px;
-    color:rgba(247,240,227,0.8);
-    cursor:pointer;
-    transition:all .35s ease;
-    background:transparent;
-  }
-  .pill .dot{width:7px; height:7px; border-radius:50%; background:var(--gold-bright); opacity:0.5;}
-  .pill:hover, .pill.active{
-    background:var(--gold-bright); color:var(--ink); border-color:var(--gold-bright);
-  }
-  .pill:hover .dot, .pill.active .dot{background:var(--ink); opacity:1;}
-
-  /* ---------- footer ---------- */
-  footer{background:var(--ink); color:rgba(247,240,227,0.55); padding:44px 0 24px;}
-  .foot-top{
-    display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:32px;
-    padding-bottom:32px; border-bottom:1px solid rgba(182,137,63,0.2);
-  }
-  .foot-brand .name{
-    font-family:'Cormorant Garamond', serif; color:var(--gold-bright);
-    font-size:1.6rem; letter-spacing:0.2em; margin-bottom:14px;
-  }
-  .foot-brand p{max-width:280px; font-size:0.92rem;}
-  footer h4{
-    font-family:'Marcellus', serif; font-size:0.75rem; letter-spacing:0.16em;
-    text-transform:uppercase; color:var(--gold-bright); margin-bottom:18px;
-  }
-  footer ul{list-style:none;}
-  footer li{margin-bottom:10px; font-size:0.92rem;}
-  footer li a:hover{color:var(--gold-bright);}
-  .foot-bottom{
-    display:flex; justify-content:space-between; align-items:center;
-    padding-top:26px; font-size:0.8rem; letter-spacing:0.02em;
-    flex-wrap:wrap; gap:10px;
-  }
-
-  /* ---------- responsive ---------- */
-  @media(max-width:980px){
-    .navlinks{display:none;}
-    .navrow{grid-template-columns:1fr;}
-    .hero .wrap{grid-template-columns:1fr; text-align:center;}
-    .hero-copy p.lede{margin-left:auto; margin-right:auto;}
-    .hero-art{order:-1; height:340px;}
-    .cat-grid{grid-template-columns:repeat(2,1fr);}
-    .story .wrap{grid-template-columns:1fr;}
-    .story{text-align:center;}
-    .story p{margin-left:auto; margin-right:auto;}
-    .foot-top{grid-template-columns:1fr 1fr; gap:32px;}
-  }
-  @media(max-width:560px){
-    .wrap{padding:0 22px;}
-    .hero-copy h1{font-size:2.5rem;}
-    .cat-grid{grid-template-columns:1fr 1fr;}
-    .foot-top{grid-template-columns:1fr;}
-    .topbar .wrap{font-size:0.62rem; padding:8px 22px;}
-  }
-</style>
+<link rel="stylesheet" href="media/css/fonts.css">
+<link rel="stylesheet" href="media/css/styles.css">
 </head>
 <body>
 
@@ -378,6 +25,7 @@
       <a href="bangles.html">Bangles</a>
     </nav>
     <div class="brandmark">
+      <a href="index.html" aria-label="Nivarika home">
       <svg width="34" height="34" viewBox="0 0 34 34" fill="none">
         <path d="M17 3C17 3 21 8 21 13C21 17.4 19.4 19 17 19C14.6 19 13 17.4 13 13C13 8 17 3 17 3Z" stroke="#d9ac5c" stroke-width="1"/>
         <path d="M6 19C10 15 24 15 28 19" stroke="#d9ac5c" stroke-width="1"/>
@@ -385,7 +33,11 @@
       </svg>
       <div class="name">NIVARIKA</div>
       <div class="tagline">Atelier Handcrafted</div>
+      </a>
     </div>
+    <button class="mobile-menu-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
     <nav class="navlinks right">
       <a href="living.html">Living</a>
       <a href="#story">Our Story</a>
@@ -611,7 +263,30 @@
   <svg viewBox="0 0 32 32" fill="#fff"><path d="M16.04 3C9.4 3 4 8.36 4 15c0 2.4.67 4.63 1.83 6.54L4 29l7.66-1.8A11.9 11.9 0 0 0 16.04 27C22.68 27 28 21.64 28 15S22.68 3 16.04 3zm0 21.6c-2 0-3.87-.55-5.47-1.5l-.39-.23-4.55 1.07 1.1-4.44-.26-.4A9.5 9.5 0 0 1 6.4 15c0-5.3 4.33-9.6 9.64-9.6 5.32 0 9.64 4.3 9.64 9.6s-4.32 9.6-9.64 9.6zm5.3-7.19c-.29-.15-1.7-.84-1.96-.93-.26-.1-.45-.15-.64.14-.19.29-.74.93-.9 1.12-.17.19-.33.22-.62.07-.29-.15-1.2-.44-2.29-1.4-.85-.75-1.42-1.68-1.59-1.97-.17-.29-.02-.44.13-.59.13-.13.29-.34.44-.5.15-.17.19-.29.29-.48.1-.19.05-.36-.02-.5-.07-.15-.64-1.54-.88-2.11-.23-.55-.47-.48-.64-.49-.17-.01-.36-.01-.55-.01-.19 0-.5.07-.76.36-.26.29-1 1-1 2.42 0 1.42 1.03 2.8 1.17 3 .15.19 2.03 3.1 4.92 4.34.69.3 1.23.48 1.65.61.69.22 1.32.19 1.82.11.55-.08 1.7-.7 1.94-1.37.24-.67.24-1.25.17-1.37-.07-.12-.26-.19-.55-.34z"/></svg>
 </a>
 
+<nav class="mobile-bottom-nav" aria-label="Quick navigation">
+  <a href="#" aria-label="Home"><span aria-hidden="true">⌂</span>Home</a>
+  <a href="#glassware" aria-label="Shop"><span aria-hidden="true">◇</span>Shop</a>
+  <a href="#story" aria-label="Our story"><span aria-hidden="true">✦</span>Story</a>
+  <a href="https://chat.whatsapp.com/YOUR_GROUP_INVITE_LINK" target="_blank" rel="noopener" aria-label="Chat on WhatsApp"><span aria-hidden="true">◌</span>Chat</a>
+</nav>
+
 <script>
+  const menuButton = document.querySelector('.mobile-menu-toggle');
+  const navigationLinks = document.querySelectorAll('.navlinks');
+
+  menuButton.addEventListener('click', () => {
+    const isOpen = menuButton.getAttribute('aria-expanded') === 'true';
+    menuButton.setAttribute('aria-expanded', String(!isOpen));
+    menuButton.setAttribute('aria-label', isOpen ? 'Open navigation menu' : 'Close navigation menu');
+    navigationLinks.forEach(nav => nav.classList.toggle('is-open', !isOpen));
+  });
+
+  navigationLinks.forEach(nav => nav.addEventListener('click', () => {
+    menuButton.setAttribute('aria-expanded', 'false');
+    menuButton.setAttribute('aria-label', 'Open navigation menu');
+    navigationLinks.forEach(item => item.classList.remove('is-open'));
+  }));
+
   function setMood(el){
     document.querySelectorAll('.pill').forEach(p=>p.classList.remove('active'));
     el.classList.add('active');
