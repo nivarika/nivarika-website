@@ -42,9 +42,9 @@
 
   /* topbar + header (matches home) */
   .topbar{background:var(--ink); color:rgba(217,172,92,0.75); font-family:'Marcellus', serif; font-size:0.72rem;}
-  .topbar .wrap{display:flex; justify-content:space-between; padding:9px 40px;}
+  .topbar .wrap{display:flex; justify-content:space-between; padding:7px 40px;}
   header.main{background:var(--ink); border-bottom:1px solid rgba(182,137,63,0.25); position:sticky; top:0; z-index:50;}
-  .navrow{display:grid; grid-template-columns:1fr auto 1fr; align-items:center; padding:20px 40px; gap:24px;}
+  .navrow{display:grid; grid-template-columns:1fr auto 1fr; align-items:center; padding:14px 40px; gap:24px;}
   .navlinks{display:flex; gap:38px; font-family:'Marcellus', serif; font-size:0.82rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--cream-2);}
   .navlinks a:hover{color:var(--gold-bright);}
   .navlinks.right{justify-content:flex-end;}
@@ -54,17 +54,17 @@
   @media(max-width:980px){ .navlinks{display:none;} .navrow{grid-template-columns:1fr;} }
 
   /* breadcrumb */
-  .crumb{padding:22px 0; font-family:'Marcellus', serif; font-size:0.75rem; letter-spacing:0.06em; color:var(--gold-deep);}
+  .crumb{padding:14px 0; font-family:'Marcellus', serif; font-size:0.75rem; letter-spacing:0.06em; color:var(--gold-deep);}
   .crumb a{color:var(--gold-deep); border-bottom:1px solid transparent;}
   .crumb a:hover{border-color:var(--gold-deep);}
 
   /* page hero */
   .page-hero{
-    padding:30px 0 60px;
+    padding:20px 0 36px;
     text-align:center;
     background:radial-gradient(ellipse at 50% 0%, rgba(217,172,92,0.14), transparent 60%);
   }
-  .page-hero h1{font-size:3rem; margin:14px 0 16px;}
+  .page-hero h1{font-size:2.6rem; margin:10px 0 12px;}
   .page-hero p{max-width:520px; margin:0 auto; color:#5a4a35;}
 
   /* whatsapp CTA banner */
@@ -72,15 +72,15 @@
     background:linear-gradient(120deg, var(--ink) 0%, #241a10 100%);
     color:var(--cream);
     border-radius:14px;
-    padding:34px 40px;
+    padding:22px 28px;
     display:flex;
     align-items:center;
     justify-content:space-between;
     gap:24px;
-    margin:0 0 60px;
+    margin:0 0 36px;
     flex-wrap:wrap;
   }
-  .wa-banner .text h3{color:var(--cream); font-size:1.5rem; margin-bottom:6px;}
+  .wa-banner .text h3{color:var(--cream); font-size:1.3rem; margin-bottom:4px;}
   .wa-banner .text p{color:rgba(247,240,227,0.6); font-size:0.95rem;}
   .wa-btn{
     display:inline-flex; align-items:center; gap:8px;
@@ -98,13 +98,13 @@
   .wa-btn svg{width:17px; height:17px; fill:#fff;}
 
   /* product grid */
-  .products{padding:0 0 100px;}
+  .products{padding:0 0 60px;}
   .filter-row{
-    display:flex; justify-content:center; gap:14px; margin-bottom:44px; flex-wrap:wrap;
+    display:flex; justify-content:center; gap:10px; margin-bottom:28px; flex-wrap:wrap;
   }
   .filter-pill{
     font-family:'Marcellus', serif; font-size:0.75rem; letter-spacing:0.08em;
-    text-transform:uppercase; padding:10px 22px; border:1px solid var(--line);
+    text-transform:uppercase; padding:8px 18px; border:1px solid var(--line);
     border-radius:30px; cursor:pointer; transition:all .3s ease; background:transparent;
     color:var(--ink);
   }
@@ -113,7 +113,7 @@
   .prod-grid{
     display:grid;
     grid-template-columns:repeat(3, 1fr);
-    gap:34px;
+    gap:22px;
   }
   .prod-card{
     background:#fff;
@@ -130,9 +130,9 @@
     font-family:'Marcellus', serif; font-size:0.62rem; letter-spacing:0.08em; text-transform:uppercase;
     padding:6px 11px; border:1px solid rgba(217,172,92,0.5);
   }
-  .prod-body{padding:20px 22px 24px; display:flex; justify-content:space-between; align-items:flex-end; gap:14px;}
+  .prod-body{padding:14px 16px 18px; display:flex; justify-content:space-between; align-items:flex-end; gap:12px;}
   .prod-info{flex:1;}
-  .prod-body h3{font-size:1.2rem; margin-bottom:4px;}
+  .prod-body h3{font-size:1.12rem; margin-bottom:3px;}
   .prod-body .sub{font-family:'Marcellus', serif; font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--gold-deep); margin-bottom:14px;}
   .price-row{display:flex; align-items:baseline; gap:8px; flex-wrap:wrap; font-family:'Marcellus', serif;}
   .price-now{font-size:1.02rem;}
@@ -159,10 +159,10 @@
   .wa-float:hover{transform:scale(1.08);}
   .wa-float svg{width:24px; height:24px;}
 
-  footer{background:var(--ink); color:rgba(247,240,227,0.55); padding:60px 0 26px;}
+  footer{background:var(--ink); color:rgba(247,240,227,0.55); padding:40px 0 22px;}
   .foot-top{
     display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:40px;
-    padding-bottom:44px; border-bottom:1px solid rgba(182,137,63,0.2);
+    padding-bottom:28px; border-bottom:1px solid rgba(182,137,63,0.2);
   }
   .foot-brand{display:flex; flex-direction:column; gap:8px;}
   .foot-logo{display:flex; align-items:center; gap:10px;}
@@ -215,13 +215,13 @@
     </div>
     <nav class="navlinks right">
       <a href="living.html">Living</a>
-      <a href="nivarika.html#story">Our Story</a>
+      <a href="index.html#story">Our Story</a>
     </nav>
   </div>
 </header>
 
 <div class="wrap">
-  <div class="crumb"><a href="nivarika.html">Home</a> &nbsp;/&nbsp; Bangles</div>
+  <div class="crumb"><a href="index.html">Home</a> &nbsp;/&nbsp; Bangles</div>
 </div>
 
 <section class="page-hero">
@@ -248,16 +248,17 @@
 <section class="products">
   <div class="wrap">
     <div class="filter-row">
-      <div class="filter-pill active">All</div>
-      <div class="filter-pill">Kundan</div>
-      <div class="filter-pill">Temple Gold</div>
-      <div class="filter-pill">Meenakari</div>
-      <div class="filter-pill">Bridal Sets</div>
+      <div class="filter-pill active" data-filter="All">All</div>
+      <div class="filter-pill" data-filter="Kundan">Kundan</div>
+      <div class="filter-pill" data-filter="Temple Gold">Temple Gold</div>
+      <div class="filter-pill" data-filter="Meenakari">Meenakari</div>
+      <div class="filter-pill" data-filter="Bridal Sets">Bridal Sets</div>
+      <div class="filter-pill" data-filter="Gold Basics">Gold Basics</div>
     </div>
 
     <div class="prod-grid">
 
-      <div class="prod-card">
+      <div class="prod-card" data-category="Kundan">
         <div class="prod-media">
           <span class="prod-badge">30% Off</span>
           <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=600&q=80&auto=format&fit=crop" alt="Kundan bangle stack" loading="lazy" onerror="this.style.display='none'">
@@ -278,7 +279,7 @@
         </div>
       </div>
 
-      <div class="prod-card">
+      <div class="prod-card" data-category="Temple Gold">
         <div class="prod-media">
           <span class="prod-badge">20% Off</span>
           <img src="https://images.unsplash.com/photo-1611652022419-a9419f74343d?w=600&q=80&auto=format&fit=crop" alt="Temple gold bangle pair" loading="lazy" onerror="this.style.display='none'">
@@ -299,7 +300,7 @@
         </div>
       </div>
 
-      <div class="prod-card">
+      <div class="prod-card" data-category="Meenakari">
         <div class="prod-media">
           <span class="prod-badge">25% Off</span>
           <img src="https://images.unsplash.com/photo-1599459183200-59c7687a0275?w=600&q=80&auto=format&fit=crop" alt="Meenakari enamel bangles" loading="lazy" onerror="this.style.display='none'">
@@ -320,7 +321,7 @@
         </div>
       </div>
 
-      <div class="prod-card">
+      <div class="prod-card" data-category="Bridal Sets">
         <div class="prod-media">
           <span class="prod-badge">Bridal</span>
           <img src="https://images.unsplash.com/photo-1620656798579-1984d9e87df7?w=600&q=80&auto=format&fit=crop" alt="Bridal bangle set" loading="lazy" onerror="this.style.display='none'">
@@ -341,7 +342,7 @@
         </div>
       </div>
 
-      <div class="prod-card">
+      <div class="prod-card" data-category="Gold Basics">
         <div class="prod-media">
           <span class="prod-badge">15% Off</span>
           <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=600&q=80&auto=format&fit=crop" alt="Slim gold bangles everyday wear" loading="lazy" onerror="this.style.display='none'">
@@ -362,7 +363,7 @@
         </div>
       </div>
 
-      <div class="prod-card">
+      <div class="prod-card" data-category="Gold Basics">
         <div class="prod-media">
           <span class="prod-badge">New</span>
           <img src="https://images.unsplash.com/photo-1611652022419-a9419f74343d?w=600&q=80&auto=format&fit=crop" alt="Broad kada bangle" loading="lazy" onerror="this.style.display='none'">
@@ -412,7 +413,7 @@
     <div>
       <h4>Studio</h4>
       <ul>
-        <li><a href="nivarika.html#story">Our Story</a></li>
+        <li><a href="index.html#story">Our Story</a></li>
         <li><a href="#">Craftsmanship</a></li>
         <li><a href="#">Journal</a></li>
       </ul>
@@ -441,6 +442,11 @@
     p.addEventListener('click', ()=>{
       document.querySelectorAll('.filter-pill').forEach(x=>x.classList.remove('active'));
       p.classList.add('active');
+      const filter = p.getAttribute('data-filter');
+      document.querySelectorAll('.prod-card').forEach(card=>{
+        const cat = card.getAttribute('data-category');
+        card.style.display = (filter === 'All' || cat === filter) ? '' : 'none';
+      });
     });
   });
 </script>
