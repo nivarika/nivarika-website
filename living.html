@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Living Collection — Nivarika</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Marcellus&family=EB+Garamond:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#181209;
+    --cream:#f7f0e3;
+    --cream-2:#efe4d0;
+    --parchment:#fbf6ec;
+    --gold:#b6893f;
+    --gold-bright:#d9ac5c;
+    --gold-deep:#7c5a26;
+    --line: rgba(182,137,63,0.35);
+    --wa:#25D366;
+    --wa-dark:#1ea952;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--parchment);
+    color:var(--ink);
+    font-family:'EB Garamond', serif;
+    font-size:17px;
+    line-height:1.6;
+  }
+  h1,h2,h3{font-family:'Cormorant Garamond', serif; font-weight:500; color:var(--ink);}
+  a{color:inherit; text-decoration:none;}
+  img{max-width:100%; display:block;}
+  .wrap{max-width:1220px; margin:0 auto; padding:0 40px;}
+  .eyebrow{
+    font-family:'Marcellus', serif;
+    font-size:0.72rem;
+    letter-spacing:0.32em;
+    text-transform:uppercase;
+    color:var(--gold-deep);
+  }
+
+  /* topbar + header (matches home) */
+  .topbar{background:var(--ink); color:rgba(217,172,92,0.75); font-family:'Marcellus', serif; font-size:0.72rem;}
+  .topbar .wrap{display:flex; justify-content:space-between; padding:9px 40px;}
+  header.main{background:var(--ink); border-bottom:1px solid rgba(182,137,63,0.25); position:sticky; top:0; z-index:50;}
+  .navrow{display:grid; grid-template-columns:1fr auto 1fr; align-items:center; padding:20px 40px; gap:24px;}
+  .navlinks{display:flex; gap:38px; font-family:'Marcellus', serif; font-size:0.82rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--cream-2);}
+  .navlinks a:hover{color:var(--gold-bright);}
+  .navlinks.right{justify-content:flex-end;}
+  .brandmark{text-align:center;}
+  .brandmark .name{font-family:'Cormorant Garamond', serif; font-size:1.9rem; letter-spacing:0.28em; color:var(--gold-bright);}
+  .brandmark .tagline{font-family:'Marcellus', serif; font-size:0.58rem; letter-spacing:0.36em; color:rgba(217,172,92,0.55); text-transform:uppercase; margin-top:2px;}
+  @media(max-width:980px){ .navlinks{display:none;} .navrow{grid-template-columns:1fr;} }
+
+  /* breadcrumb */
+  .crumb{padding:22px 0; font-family:'Marcellus', serif; font-size:0.75rem; letter-spacing:0.06em; color:var(--gold-deep);}
+  .crumb a{color:var(--gold-deep); border-bottom:1px solid transparent;}
+  .crumb a:hover{border-color:var(--gold-deep);}
+
+  /* page hero */
+  .page-hero{
+    padding:30px 0 60px;
+    text-align:center;
+    background:radial-gradient(ellipse at 50% 0%, rgba(217,172,92,0.14), transparent 60%);
+  }
+  .page-hero h1{font-size:3rem; margin:14px 0 16px;}
+  .page-hero p{max-width:520px; margin:0 auto; color:#5a4a35;}
+
+  /* whatsapp CTA banner */
+  .wa-banner{
+    background:linear-gradient(120deg, var(--ink) 0%, #241a10 100%);
+    color:var(--cream);
+    border-radius:14px;
+    padding:34px 40px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:24px;
+    margin:0 0 60px;
+    flex-wrap:wrap;
+  }
+  .wa-banner .text h3{color:var(--cream); font-size:1.5rem; margin-bottom:6px;}
+  .wa-banner .text p{color:rgba(247,240,227,0.6); font-size:0.95rem;}
+  .wa-btn{
+    display:inline-flex; align-items:center; gap:8px;
+    background:var(--wa);
+    color:#fff;
+    font-family:'Marcellus', serif;
+    font-size:0.72rem;
+    letter-spacing:0.04em;
+    padding:11px 18px;
+    border-radius:30px;
+    white-space:nowrap;
+    transition:background .3s ease, transform .3s ease;
+  }
+  .wa-btn:hover{background:var(--wa-dark); transform:translateY(-2px);}
+  .wa-btn svg{width:17px; height:17px; fill:#fff;}
+
+  /* product grid */
+  .products{padding:0 0 100px;}
+  .filter-row{
+    display:flex; justify-content:center; gap:14px; margin-bottom:44px; flex-wrap:wrap;
+  }
+  .filter-pill{
+    font-family:'Marcellus', serif; font-size:0.75rem; letter-spacing:0.08em;
+    text-transform:uppercase; padding:10px 22px; border:1px solid var(--line);
+    border-radius:30px; cursor:pointer; transition:all .3s ease; background:transparent;
+    color:var(--ink);
+  }
+  .filter-pill.active, .filter-pill:hover{background:var(--ink); color:var(--gold-bright); border-color:var(--ink);}
+
+  .prod-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:34px;
+  }
+  .prod-card{
+    background:#fff;
+    border:1px solid var(--line);
+    overflow:hidden;
+    transition:transform .35s ease, box-shadow .35s ease;
+  }
+  .prod-card:hover{transform:translateY(-6px); box-shadow:0 18px 34px rgba(24,18,9,0.12);}
+  .prod-media{position:relative; aspect-ratio:1/1; overflow:hidden; background:linear-gradient(135deg,#e9dcc0,#cba85f 60%,#8a6a34);}
+  .prod-media img{width:100%; height:100%; object-fit:cover; transition:transform .6s ease;}
+  .prod-card:hover .prod-media img{transform:scale(1.07);}
+  .prod-badge{
+    position:absolute; top:12px; left:12px; background:var(--ink); color:var(--gold-bright);
+    font-family:'Marcellus', serif; font-size:0.62rem; letter-spacing:0.08em; text-transform:uppercase;
+    padding:6px 11px; border:1px solid rgba(217,172,92,0.5);
+  }
+  .prod-body{padding:20px 22px 24px; display:flex; justify-content:space-between; align-items:flex-end; gap:14px;}
+  .prod-info{flex:1;}
+  .prod-body h3{font-size:1.2rem; margin-bottom:4px;}
+  .prod-body .sub{font-family:'Marcellus', serif; font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--gold-deep); margin-bottom:14px;}
+  .price-row{display:flex; align-items:baseline; gap:8px; flex-wrap:wrap; font-family:'Marcellus', serif;}
+  .price-now{font-size:1.02rem;}
+  .price-was{font-size:0.8rem; color:#8a7a63; text-decoration:line-through; text-decoration-color:var(--gold);}
+  .price-off{font-size:0.64rem; color:#a8482f; width:100%;}
+  .enquire-btn{
+    flex-shrink:0;
+    width:42px; height:42px;
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    background:var(--wa);
+    transition:all .3s ease;
+  }
+  .enquire-btn:hover{background:var(--wa-dark); transform:scale(1.08);}
+  .enquire-btn svg{width:20px; height:20px; fill:#fff;}
+
+  /* floating whatsapp */
+  .wa-float{
+    position:fixed; right:26px; bottom:26px; z-index:100;
+    width:50px; height:50px; border-radius:50%; background:var(--wa);
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 8px 22px rgba(0,0,0,0.28); transition:transform .3s ease;
+  }
+  .wa-float:hover{transform:scale(1.08);}
+  .wa-float svg{width:24px; height:24px;}
+
+  footer{background:var(--ink); color:rgba(247,240,227,0.55); padding:60px 0 26px;}
+  .foot-top{
+    display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:40px;
+    padding-bottom:44px; border-bottom:1px solid rgba(182,137,63,0.2);
+  }
+  .foot-brand{display:flex; flex-direction:column; gap:8px;}
+  .foot-logo{display:flex; align-items:center; gap:10px;}
+  .foot-brand .name{font-family:'Cormorant Garamond', serif; color:var(--gold-bright); font-size:1.6rem; letter-spacing:0.2em;}
+  .foot-brand p{max-width:280px; font-size:0.9rem; margin-top:6px;}
+  footer h4{font-family:'Marcellus', serif; font-size:0.72rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--gold-bright); margin-bottom:16px;}
+  footer ul{list-style:none;}
+  footer li{margin-bottom:9px; font-size:0.9rem;}
+  footer li a:hover{color:var(--gold-bright);}
+  .foot-bottom{display:flex; justify-content:space-between; align-items:center; padding-top:24px; font-size:0.8rem; flex-wrap:wrap; gap:10px; max-width:1220px; margin:0 auto; padding-left:40px; padding-right:40px;}
+  .foot-top{max-width:1220px; margin:0 auto; padding-left:40px; padding-right:40px;}
+  @media(max-width:900px){ .foot-top{grid-template-columns:1fr 1fr; gap:30px;} }
+  @media(max-width:560px){ .foot-top{grid-template-columns:1fr;} }
+
+  @media(max-width:900px){
+    .prod-grid{grid-template-columns:repeat(2,1fr);}
+    .wa-banner{flex-direction:column; text-align:center;}
+  }
+  @media(max-width:560px){
+    .wrap{padding:0 22px;}
+    .prod-grid{grid-template-columns:1fr;}
+    .page-hero h1{font-size:2.2rem;}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <span>&#9742; +91 98 4021 6600</span>
+    <span>Complimentary shipping across India</span>
+  </div>
+</div>
+
+<header class="main">
+  <div class="navrow wrap">
+    <nav class="navlinks">
+      <a href="glassware.html">Glassware</a>
+      <a href="dinnerware.html">Dinnerware</a>
+      <a href="bangles.html">Bangles</a>
+    </nav>
+    <div class="brandmark">
+      <svg width="30" height="30" viewBox="0 0 34 34" fill="none" style="margin:0 auto 4px;">
+        <path d="M17 3C17 3 21 8 21 13C21 17.4 19.4 19 17 19C14.6 19 13 17.4 13 13C13 8 17 3 17 3Z" stroke="#d9ac5c" stroke-width="1"/>
+        <path d="M6 19C10 15 24 15 28 19" stroke="#d9ac5c" stroke-width="1"/>
+        <path d="M9 22C13 26 21 26 25 22" stroke="#d9ac5c" stroke-width="1"/>
+      </svg>
+      <div class="name">NIVARIKA</div>
+      <div class="tagline">Atelier Handcrafted</div>
+    </div>
+    <nav class="navlinks right">
+      <a href="living.html">Living</a>
+      <a href="nivarika.html#story">Our Story</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="crumb"><a href="nivarika.html">Home</a> &nbsp;/&nbsp; Living</div>
+</div>
+
+<section class="page-hero">
+  <div class="wrap">
+    <span class="eyebrow">Lanterns, Vases &amp; Décor</span>
+    <h1>The Living Collection</h1>
+    <p>Hand-forged brass lanterns, vases and wall pieces to bring warmth into every room. Message us on WhatsApp for bundle pricing, gifting, or to place an order directly.</p>
+  </div>
+</section>
+
+<div class="wrap">
+  <div class="wa-banner">
+    <div class="text">
+      <h3>Order &amp; chat with us on WhatsApp</h3>
+      <p>Join our group for new arrivals, sizing help, and to place your order directly with the team.</p>
+    </div>
+    <a class="wa-btn" href="https://chat.whatsapp.com/YOUR_GROUP_INVITE_LINK" target="_blank" rel="noopener">
+      <svg viewBox="0 0 32 32"><path d="M16.04 3C9.4 3 4 8.36 4 15c0 2.4.67 4.63 1.83 6.54L4 29l7.66-1.8A11.9 11.9 0 0 0 16.04 27C22.68 27 28 21.64 28 15S22.68 3 16.04 3zm0 21.6c-2 0-3.87-.55-5.47-1.5l-.39-.23-4.55 1.07 1.1-4.44-.26-.4A9.5 9.5 0 0 1 6.4 15c0-5.3 4.33-9.6 9.64-9.6 5.32 0 9.64 4.3 9.64 9.6s-4.32 9.6-9.64 9.6zm5.3-7.19c-.29-.15-1.7-.84-1.96-.93-.26-.1-.45-.15-.64.14-.19.29-.74.93-.9 1.12-.17.19-.33.22-.62.07-.29-.15-1.2-.44-2.29-1.4-.85-.75-1.42-1.68-1.59-1.97-.17-.29-.02-.44.13-.59.13-.13.29-.34.44-.5.15-.17.19-.29.29-.48.1-.19.05-.36-.02-.5-.07-.15-.64-1.54-.88-2.11-.23-.55-.47-.48-.64-.49-.17-.01-.36-.01-.55-.01-.19 0-.5.07-.76.36-.26.29-1 1-1 2.42 0 1.42 1.03 2.8 1.17 3 .15.19 2.03 3.1 4.92 4.34.69.3 1.23.48 1.65.61.69.22 1.32.19 1.82.11.55-.08 1.7-.7 1.94-1.37.24-.67.24-1.25.17-1.37-.07-.12-.26-.19-.55-.34z"/></svg>
+      Join Group
+    </a>
+  </div>
+</div>
+
+<section class="products">
+  <div class="wrap">
+    <div class="filter-row">
+      <div class="filter-pill active">All</div>
+      <div class="filter-pill">Lanterns</div>
+      <div class="filter-pill">Candle Holders</div>
+      <div class="filter-pill">Vases</div>
+      <div class="filter-pill">Wall Décor</div>
+    </div>
+
+    <div class="prod-grid">
+
+      <div class="prod-card">
+        <div class="prod-media">
+          <span class="prod-badge">10% Off</span>
+          <img src="https://images.unsplash.com/photo-1602874801006-e26c4c5b5b21?w=600&q=80&auto=format&fit=crop" alt="Gold lantern candle holder" loading="lazy" onerror="this.style.display='none'">
+        </div>
+        <div class="prod-body">
+          <div class="prod-info">
+            <h3>Hexagon Lantern</h3>
+            <div class="sub">Brass &amp; Glass</div>
+            <div class="price-row">
+              <span class="price-now">₹1,890</span>
+              <span class="price-was">₹2,100</span>
+              <span class="price-off">Save 10%</span>
+            </div>
+          </div>
+          <a class="enquire-btn" href="https://chat.whatsapp.com/YOUR_GROUP_INVITE_LINK" target="_blank" rel="noopener" title="Enquire on WhatsApp" aria-label="Enquire on WhatsApp">
+            <svg viewBox="0 0 32 32"><path d="M16.04 3C9.4 3 4 8.36 4 15c0 2.4.67 4.63 1.83 6.54L4 29l7.66-1.8A11.9 11.9 0 0 0 16.04 27C22.68 27 28 21.64 28 15S22.68 3 16.04 3zm0 21.6c-2 0-3.87-.55-5.47-1.5l-.39-.23-4.55 1.07 1.1-4.44-.26-.4A9.5 9.5 0 0 1 6.4 15c0-5.3 4.33-9.6 9.64-9.6 5.32 0 9.64 4.3 9.64 9.6s-4.32 9.6-9.64 9.6zm5.3-7.19c-.29-.15-1.7-.84-1.96-.93-.26-.1-.45-.15-.64.14-.19.29-.74.93-.9 1.12-.17.19-.33.22-.62.07-.29-.15-1.2-.44-2.29-1.4-.85-.75-1.42-1.68-1.59-1.97-.17-.29-.02-.44.13-.59.13-.13.29-.34.44-.5.15-.17.19-.29.29-.48.1-.19.05-.36-.02-.5-.07-.15-.64-1.54-.88-2.11-.23-.55-.47-.48-.64-.49-.17-.01-.36-.01-.55-.01-.19 0-.5.07-.76.36-.26.29-1 1-1 2.42 0 1.42 1.03 2.8 1.17 3 .15.19 2.03 3.1 4.92 4.34.69.3 1.23.48 1.65.61.69.22 1.32.19 1.82.11.55-.08 1.7-.7 1.94-1.37.24-.67.24-1.25.17-1.37-.07-.12-.26-.19-.55-.34z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="prod-card">
+        <div class="prod-media">
+          <span class="prod-badge">15% Off</span>
+          <img src="https://images.unsplash.com/photo-1602874801006-e26c4c5b5b21?w=600&q=80&auto=format&fit=crop" alt="Taper candle holder set" loading="lazy" onerror="this.style.display='none'">
+        </div>
+        <div class="prod-body">
+          <div class="prod-info">
+            <h3>Taper Candle Holders — Set of 3</h3>
+            <div class="sub">Antique Brass</div>
+            <div class="price-row">
+              <span class="price-now">₹1,499</span>
+              <span class="price-was">₹1,749</span>
+              <span class="price-off">Save 15%</span>
+            </div>
+          </div>
+          <a class="enquire-btn" href="https://chat.whatsapp.com/YOUR_GROUP_INVITE_LINK" target="_blank" rel="noopener" title="Enquire on WhatsApp" aria-label="Enquire on WhatsApp">
+            <svg viewBox="0 0 32 32"><path d="M16.04 3C9.4 3 4 8.36 4 15c0 2.4.67 4.63 1.83 6.54L4 29l7.66-1.8A11.9 11.9 0 0 0 16.04 27C22.68 27 28 21.64 28 15S22.68 3 16.04 3zm0 21.6c-2 0-3.87-.55-5.47-1.5l-.39-.23-4.55 1.07 1.1-4.44-.26-.4A9.5 9.5 0 0 1 6.4 15c0-5.3 4.33-9.6 9.64-9.6 5.32 0 9.64 4.3 9.64 9.6s-4.32 9.6-9.64 9.6zm5.3-7.19c-.29-.15-1.7-.84-1.96-.93-.26-.1-.45-.15-.64.14-.19.29-.74.93-.9 1.12-.17.19-.33.22-.62.07-.29-.15-1.2-.44-2.29-1.4-.85-.75-1.42-1.68-1.59-1.97-.17-.29-.02-.44.13-.59.13-.13.29-.34.44-.5.15-.17.19-.29.29-.48.1-.19.05-.36-.02-.5-.07-.15-.64-1.54-.88-2.11-.23-.55-.47-.48-.64-.49-.17-.01-.36-.01-.55-.01-.19 0-.5.07-.76.36-.26.29-1 1-1 2.42 0 1.42 1.03 2.8 1.17 3 .15.19 2.03 3.1 4.92 4.34.69.3 1.23.48 1.65.61.69.22 1.32.19 1.82.11.55-.08 1.7-.7 1.94-1.37.24-.67.24-1.25.17-1.37-.07-.12-.26-.19-.55-.34z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="prod-card">
+        <div class="prod-media">
+          <span class="prod-badge">New</span>
+          <img src="https://images.unsplash.com/photo-1602874801006-e26c4c5b5b21?w=600&q=80&auto=format&fit=crop" alt="Decorative flower vase" loading="lazy" onerror="this.style.display='none'">
+        </div>
+        <div class="prod-body">
+          <div class="prod-info">
+            <h3>Hammered Gold Vase</h3>
+            <div class="sub">Hand-hammered Metal</div>
+            <div class="price-row">
+              <span class="price-now">₹2,299</span>
+              <span class="price-was">₹2,599</span>
+              <span class="price-off">Save 12%</span>
+            </div>
+          </div>
+          <a class="enquire-btn" href="https://chat.whatsapp.com/YOUR_GROUP_INVITE_LINK" target="_blank" rel="noopener" title="Enquire on WhatsApp" aria-label="Enquire on WhatsApp">
+            <svg viewBox="0 0 32 32"><path d="M16.04 3C9.4 3 4 8.36 4 15c0 2.4.67 4.63 1.83 6.54L4 29l7.66-1.8A11.9 11.9 0 0 0 16.04 27C22.68 27 28 21.64 28 15S22.68 3 16.04 3zm0 21.6c-2 0-3.87-.55-5.47-1.5l-.39-.23-4.55 1.07 1.1-4.44-.26-.4A9.5 9.5 0 0 1 6.4 15c0-5.3 4.33-9.6 9.64-9.6 5.32 0 9.64 4.3 9.64 9.6s-4.32 9.6-9.64 9.6zm5.3-7.19c-.29-.15-1.7-.84-1.96-.93-.26-.1-.45-.15-.64.14-.19.29-.74.93-.9 1.12-.17.19-.33.22-.62.07-.29-.15-1.2-.44-2.29-1.4-.85-.75-1.42-1.68-1.59-1.97-.17-.29-.02-.44.13-.59.13-.13.29-.34.44-.5.15-.17.19-.29.29-.48.1-.19.05-.36-.02-.5-.07-.15-.64-1.54-.88-2.11-.23-.55-.47-.48-.64-.49-.17-.01-.36-.01-.55-.01-.19 0-.5.07-.76.36-.26.29-1 1-1 2.42 0 1.42 1.03 2.8 1.17 3 .15.19 2.03 3.1 4.92 4.34.69.3 1.23.48 1.65.61.69.22 1.32.19 1.82.11.55-.08 1.7-.7 1.94-1.37.24-.67.24-1.25.17-1.37-.07-.12-.26-.19-.55-.34z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="prod-card">
+        <div class="prod-media">
+          <span class="prod-badge">20% Off</span>
+          <img src="https://images.unsplash.com/photo-1602874801006-e26c4c5b5b21?w=600&q=80&auto=format&fit=crop" alt="Decorative serving tray" loading="lazy" onerror="this.style.display='none'">
+        </div>
+        <div class="prod-body">
+          <div class="prod-info">
+            <h3>Round Serving Tray</h3>
+            <div class="sub">Gold-plated Brass</div>
+            <div class="price-row">
+              <span class="price-now">₹1,999</span>
+              <span class="price-was">₹2,499</span>
+              <span class="price-off">Save 20%</span>
+            </div>
+          </div>
+          <a class="enquire-btn" href="https://chat.whatsapp.com/YOUR_GROUP_INVITE_LINK" target="_blank" rel="noopener" title="Enquire on WhatsApp" aria-label="Enquire on WhatsApp">
+            <svg viewBox="0 0 32 32"><path d="M16.04 3C9.4 3 4 8.36 4 15c0 2.4.67 4.63 1.83 6.54L4 29l7.66-1.8A11.9 11.9 0 0 0 16.04 27C22.68 27 28 21.64 28 15S22.68 3 16.04 3zm0 21.6c-2 0-3.87-.55-5.47-1.5l-.39-.23-4.55 1.07 1.1-4.44-.26-.4A9.5 9.5 0 0 1 6.4 15c0-5.3 4.33-9.6 9.64-9.6 5.32 0 9.64 4.3 9.64 9.6s-4.32 9.6-9.64 9.6zm5.3-7.19c-.29-.15-1.7-.84-1.96-.93-.26-.1-.45-.15-.64.14-.19.29-.74.93-.9 1.12-.17.19-.33.22-.62.07-.29-.15-1.2-.44-2.29-1.4-.85-.75-1.42-1.68-1.59-1.97-.17-.29-.02-.44.13-.59.13-.13.29-.34.44-.5.15-.17.19-.29.29-.48.1-.19.05-.36-.02-.5-.07-.15-.64-1.54-.88-2.11-.23-.55-.47-.48-.64-.49-.17-.01-.36-.01-.55-.01-.19 0-.5.07-.76.36-.26.29-1 1-1 2.42 0 1.42 1.03 2.8 1.17 3 .15.19 2.03 3.1 4.92 4.34.69.3 1.23.48 1.65.61.69.22 1.32.19 1.82.11.55-.08 1.7-.7 1.94-1.37.24-.67.24-1.25.17-1.37-.07-.12-.26-.19-.55-.34z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="prod-card">
+        <div class="prod-media">
+          <span class="prod-badge">12% Off</span>
+          <img src="https://images.unsplash.com/photo-1602874801006-e26c4c5b5b21?w=600&q=80&auto=format&fit=crop" alt="Wall hanging decor mirror" loading="lazy" onerror="this.style.display='none'">
+        </div>
+        <div class="prod-body">
+          <div class="prod-info">
+            <h3>Sunburst Wall Mirror</h3>
+            <div class="sub">Hand-forged Brass</div>
+            <div class="price-row">
+              <span class="price-now">₹3,499</span>
+              <span class="price-was">₹3,999</span>
+              <span class="price-off">Save 12%</span>
+            </div>
+          </div>
+          <a class="enquire-btn" href="https://chat.whatsapp.com/YOUR_GROUP_INVITE_LINK" target="_blank" rel="noopener" title="Enquire on WhatsApp" aria-label="Enquire on WhatsApp">
+            <svg viewBox="0 0 32 32"><path d="M16.04 3C9.4 3 4 8.36 4 15c0 2.4.67 4.63 1.83 6.54L4 29l7.66-1.8A11.9 11.9 0 0 0 16.04 27C22.68 27 28 21.64 28 15S22.68 3 16.04 3zm0 21.6c-2 0-3.87-.55-5.47-1.5l-.39-.23-4.55 1.07 1.1-4.44-.26-.4A9.5 9.5 0 0 1 6.4 15c0-5.3 4.33-9.6 9.64-9.6 5.32 0 9.64 4.3 9.64 9.6s-4.32 9.6-9.64 9.6zm5.3-7.19c-.29-.15-1.7-.84-1.96-.93-.26-.1-.45-.15-.64.14-.19.29-.74.93-.9 1.12-.17.19-.33.22-.62.07-.29-.15-1.2-.44-2.29-1.4-.85-.75-1.42-1.68-1.59-1.97-.17-.29-.02-.44.13-.59.13-.13.29-.34.44-.5.15-.17.19-.29.29-.48.1-.19.05-.36-.02-.5-.07-.15-.64-1.54-.88-2.11-.23-.55-.47-.48-.64-.49-.17-.01-.36-.01-.55-.01-.19 0-.5.07-.76.36-.26.29-1 1-1 2.42 0 1.42 1.03 2.8 1.17 3 .15.19 2.03 3.1 4.92 4.34.69.3 1.23.48 1.65.61.69.22 1.32.19 1.82.11.55-.08 1.7-.7 1.94-1.37.24-.67.24-1.25.17-1.37-.07-.12-.26-.19-.55-.34z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="prod-card">
+        <div class="prod-media">
+          <span class="prod-badge">Bundle</span>
+          <img src="https://images.unsplash.com/photo-1602874801006-e26c4c5b5b21?w=600&q=80&auto=format&fit=crop" alt="Home decor gift bundle" loading="lazy" onerror="this.style.display='none'">
+        </div>
+        <div class="prod-body">
+          <div class="prod-info">
+            <h3>Festive Decor Bundle — 5pc</h3>
+            <div class="sub">Lanterns, Vase &amp; Tray</div>
+            <div class="price-row">
+              <span class="price-now">₹5,499</span>
+              <span class="price-was">₹6,999</span>
+              <span class="price-off">Save 21%</span>
+            </div>
+          </div>
+          <a class="enquire-btn" href="https://chat.whatsapp.com/YOUR_GROUP_INVITE_LINK" target="_blank" rel="noopener" title="Enquire on WhatsApp" aria-label="Enquire on WhatsApp">
+            <svg viewBox="0 0 32 32"><path d="M16.04 3C9.4 3 4 8.36 4 15c0 2.4.67 4.63 1.83 6.54L4 29l7.66-1.8A11.9 11.9 0 0 0 16.04 27C22.68 27 28 21.64 28 15S22.68 3 16.04 3zm0 21.6c-2 0-3.87-.55-5.47-1.5l-.39-.23-4.55 1.07 1.1-4.44-.26-.4A9.5 9.5 0 0 1 6.4 15c0-5.3 4.33-9.6 9.64-9.6 5.32 0 9.64 4.3 9.64 9.6s-4.32 9.6-9.64 9.6zm5.3-7.19c-.29-.15-1.7-.84-1.96-.93-.26-.1-.45-.15-.64.14-.19.29-.74.93-.9 1.12-.17.19-.33.22-.62.07-.29-.15-1.2-.44-2.29-1.4-.85-.75-1.42-1.68-1.59-1.97-.17-.29-.02-.44.13-.59.13-.13.29-.34.44-.5.15-.17.19-.29.29-.48.1-.19.05-.36-.02-.5-.07-.15-.64-1.54-.88-2.11-.23-.55-.47-.48-.64-.49-.17-.01-.36-.01-.55-.01-.19 0-.5.07-.76.36-.26.29-1 1-1 2.42 0 1.42 1.03 2.8 1.17 3 .15.19 2.03 3.1 4.92 4.34.69.3 1.23.48 1.65.61.69.22 1.32.19 1.82.11.55-.08 1.7-.7 1.94-1.37.24-.67.24-1.25.17-1.37-.07-.12-.26-.19-.55-.34z"/></svg>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-top">
+    <div class="foot-brand">
+      <div class="foot-logo">
+        <svg width="30" height="30" viewBox="0 0 34 34" fill="none">
+          <path d="M17 3C17 3 21 8 21 13C21 17.4 19.4 19 17 19C14.6 19 13 17.4 13 13C13 8 17 3 17 3Z" stroke="#d9ac5c" stroke-width="1"/>
+          <path d="M6 19C10 15 24 15 28 19" stroke="#d9ac5c" stroke-width="1"/>
+          <path d="M9 22C13 26 21 26 25 22" stroke="#d9ac5c" stroke-width="1"/>
+        </svg>
+        <div class="name">NIVARIKA</div>
+      </div>
+      <p>Atelier-crafted glassware, dinnerware, bangles and home décor, made by hand across India.</p>
+    </div>
+    <div>
+      <h4>Shop</h4>
+      <ul>
+        <li><a href="glassware.html">Glassware</a></li>
+        <li><a href="dinnerware.html">Dinnerware</a></li>
+        <li><a href="bangles.html">Bangles</a></li>
+        <li><a href="living.html">Living</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Studio</h4>
+      <ul>
+        <li><a href="nivarika.html#story">Our Story</a></li>
+        <li><a href="#">Craftsmanship</a></li>
+        <li><a href="#">Journal</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <ul>
+        <li>+91 98 4021 6600</li>
+        <li>hello@nivarika.com</li>
+        <li>www.nivarika.com</li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>&copy; 2026 Nivarika Atelier. All rights reserved.</span>
+    <span>Handcrafted in India</span>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://chat.whatsapp.com/YOUR_GROUP_INVITE_LINK" target="_blank" rel="noopener" aria-label="Join our WhatsApp group">
+  <svg viewBox="0 0 32 32" fill="#fff"><path d="M16.04 3C9.4 3 4 8.36 4 15c0 2.4.67 4.63 1.83 6.54L4 29l7.66-1.8A11.9 11.9 0 0 0 16.04 27C22.68 27 28 21.64 28 15S22.68 3 16.04 3zm0 21.6c-2 0-3.87-.55-5.47-1.5l-.39-.23-4.55 1.07 1.1-4.44-.26-.4A9.5 9.5 0 0 1 6.4 15c0-5.3 4.33-9.6 9.64-9.6 5.32 0 9.64 4.3 9.64 9.6s-4.32 9.6-9.64 9.6zm5.3-7.19c-.29-.15-1.7-.84-1.96-.93-.26-.1-.45-.15-.64.14-.19.29-.74.93-.9 1.12-.17.19-.33.22-.62.07-.29-.15-1.2-.44-2.29-1.4-.85-.75-1.42-1.68-1.59-1.97-.17-.29-.02-.44.13-.59.13-.13.29-.34.44-.5.15-.17.19-.29.29-.48.1-.19.05-.36-.02-.5-.07-.15-.64-1.54-.88-2.11-.23-.55-.47-.48-.64-.49-.17-.01-.36-.01-.55-.01-.19 0-.5.07-.76.36-.26.29-1 1-1 2.42 0 1.42 1.03 2.8 1.17 3 .15.19 2.03 3.1 4.92 4.34.69.3 1.23.48 1.65.61.69.22 1.32.19 1.82.11.55-.08 1.7-.7 1.94-1.37.24-.67.24-1.25.17-1.37-.07-.12-.26-.19-.55-.34z"/></svg>
+</a>
+
+<script>
+  document.querySelectorAll('.filter-pill').forEach(p=>{
+    p.addEventListener('click', ()=>{
+      document.querySelectorAll('.filter-pill').forEach(x=>x.classList.remove('active'));
+      p.classList.add('active');
+    });
+  });
+</script>
+
+</body>
+</html>

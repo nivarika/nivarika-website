@@ -177,8 +177,25 @@
     cursor:pointer;
     display:flex;
     flex-direction:column;
+    color:inherit;
   }
+  a.cat-card{text-decoration:none;}
   .cat-card:hover{background:var(--cream-2);}
+
+  /* floating whatsapp button */
+  .wa-float{
+    position:fixed;
+    right:26px; bottom:26px;
+    z-index:100;
+    width:50px; height:50px;
+    border-radius:50%;
+    background:#25D366;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 8px 22px rgba(0,0,0,0.28);
+    transition:transform .3s ease;
+  }
+  .wa-float:hover{transform:scale(1.08);}
+  .wa-float svg{width:24px; height:24px;}
 
   .cat-media{
     position:relative;
@@ -355,8 +372,8 @@
 <header class="main">
   <div class="navrow wrap">
     <nav class="navlinks">
-      <a href="#glassware">Glassware</a>
-      <a href="#dinnerware">Dinnerware</a>
+      <a href="glassware.html">Glassware</a>
+      <a href="dinnerware.html">Dinnerware</a>
       <a href="bangles.html">Bangles</a>
     </nav>
     <div class="brandmark">
@@ -369,7 +386,7 @@
       <div class="tagline">Atelier Handcrafted</div>
     </div>
     <nav class="navlinks right">
-      <a href="#living">Living</a>
+      <a href="living.html">Living</a>
       <a href="#story">Our Story</a>
     </nav>
   </div>
@@ -426,7 +443,7 @@
     </div>
     <div class="cat-grid">
 
-      <div class="cat-card" id="dinnerware">
+      <a href="glassware.html" class="cat-card" id="glassware-card">
         <div class="cat-media">
           <span class="badge-sale">20% Off</span>
           <span class="icon-frame">
@@ -436,16 +453,16 @@
         </div>
         <div class="cat-body">
           <h3>Glassware</h3>
-          <div class="sub">Hand-cut Crystal</div>
+          <div class="sub">Hand-cut Crystal &middot; View all styles &rarr;</div>
           <div class="price-row">
             <span class="price-now">₹2,399</span>
             <span class="price-was">₹2,999</span>
             <span class="price-off">Save 20%</span>
           </div>
         </div>
-      </div>
+      </a>
 
-      <div class="cat-card">
+      <a href="dinnerware.html" class="cat-card" id="dinnerware-card">
         <div class="cat-media">
           <span class="badge-sale">15% Off</span>
           <span class="icon-frame">
@@ -455,16 +472,16 @@
         </div>
         <div class="cat-body">
           <h3>Dinnerware</h3>
-          <div class="sub">Gold-rimmed Porcelain</div>
+          <div class="sub">Gold-rimmed Porcelain &middot; View all styles &rarr;</div>
           <div class="price-row">
             <span class="price-now">₹4,250</span>
             <span class="price-was">₹5,000</span>
             <span class="price-off">Save 15%</span>
           </div>
         </div>
-      </div>
+      </a>
 
-      <a href="bangles.html" class="cat-card" id="bangles">
+      <a href="bangles.html" class="cat-card" id="bangles-card">
         <div class="cat-media">
           <span class="badge-sale">30% Off</span>
           <span class="icon-frame">
@@ -474,7 +491,7 @@
         </div>
         <div class="cat-body">
           <h3>Bangles</h3>
-          <div class="sub">Hand-strung Kundan</div>
+          <div class="sub">Hand-strung Kundan &middot; View all styles &rarr;</div>
           <div class="price-row">
             <span class="price-now">₹1,749</span>
             <span class="price-was">₹2,499</span>
@@ -483,7 +500,7 @@
         </div>
       </a>
 
-      <div class="cat-card" id="living">
+      <a href="living.html" class="cat-card" id="living-card">
         <div class="cat-media">
           <span class="badge-sale">10% Off</span>
           <span class="icon-frame">
@@ -493,14 +510,14 @@
         </div>
         <div class="cat-body">
           <h3>Living</h3>
-          <div class="sub">Lanterns &amp; Décor</div>
+          <div class="sub">Lanterns &amp; Décor &middot; View all styles &rarr;</div>
           <div class="price-row">
             <span class="price-now">₹1,890</span>
             <span class="price-was">₹2,100</span>
             <span class="price-off">Save 10%</span>
           </div>
         </div>
-      </div>
+      </a>
 
     </div>
   </div>
@@ -588,6 +605,10 @@
     </div>
   </div>
 </footer>
+
+<a class="wa-float" href="https://chat.whatsapp.com/YOUR_GROUP_INVITE_LINK" target="_blank" rel="noopener" aria-label="Join our WhatsApp group">
+  <svg viewBox="0 0 32 32" fill="#fff"><path d="M16.04 3C9.4 3 4 8.36 4 15c0 2.4.67 4.63 1.83 6.54L4 29l7.66-1.8A11.9 11.9 0 0 0 16.04 27C22.68 27 28 21.64 28 15S22.68 3 16.04 3zm0 21.6c-2 0-3.87-.55-5.47-1.5l-.39-.23-4.55 1.07 1.1-4.44-.26-.4A9.5 9.5 0 0 1 6.4 15c0-5.3 4.33-9.6 9.64-9.6 5.32 0 9.64 4.3 9.64 9.6s-4.32 9.6-9.64 9.6zm5.3-7.19c-.29-.15-1.7-.84-1.96-.93-.26-.1-.45-.15-.64.14-.19.29-.74.93-.9 1.12-.17.19-.33.22-.62.07-.29-.15-1.2-.44-2.29-1.4-.85-.75-1.42-1.68-1.59-1.97-.17-.29-.02-.44.13-.59.13-.13.29-.34.44-.5.15-.17.19-.29.29-.48.1-.19.05-.36-.02-.5-.07-.15-.64-1.54-.88-2.11-.23-.55-.47-.48-.64-.49-.17-.01-.36-.01-.55-.01-.19 0-.5.07-.76.36-.26.29-1 1-1 2.42 0 1.42 1.03 2.8 1.17 3 .15.19 2.03 3.1 4.92 4.34.69.3 1.23.48 1.65.61.69.22 1.32.19 1.82.11.55-.08 1.7-.7 1.94-1.37.24-.67.24-1.25.17-1.37-.07-.12-.26-.19-.55-.34z"/></svg>
+</a>
 
 <script>
   function setMood(el){
