@@ -1,0 +1,229 @@
+/* ============================================================
+   Nivarika — storefront layer
+   Loaded after styles.css and product-quick-view.css, so the
+   rules here intentionally win where they overlap — this file is
+   the progressive-enhancement layer on top of the base layout.
+
+   Covers:
+     1. Save for later (per-card heart + quick-view control)
+     2. Stock states — sold out and low stock
+     3. Sticky category filter + touch feedback
+     4. Premium mobile layout — two products per row
+   ============================================================ */
+
+/* ---------- 1. save for later ---------------------------------- */
+
+.save-btn{
+  position:absolute;
+  top:11px; right:11px;
+  z-index:3;
+  width:40px; height:40px;
+  display:flex; align-items:center; justify-content:center;
+  padding:0;
+  border:1px solid rgba(247,240,227,0.55);
+  border-radius:50%;
+  background:rgba(24,18,9,0.42);
+  backdrop-filter:blur(3px);
+  cursor:pointer;
+  transition:background .25s ease, border-color .25s ease, transform .25s ease;
+}
+.save-btn:hover{background:rgba(24,18,9,0.65); transform:scale(1.07);}
+.save-btn:active{transform:scale(0.9);}
+.save-btn:focus-visible{outline:3px solid var(--gold-bright); outline-offset:2px;}
+.save-btn svg{
+  width:19px; height:19px;
+  fill:none;
+  stroke:#f7f0e3;
+  stroke-width:1.5;
+  transition:fill .25s ease, stroke .25s ease, transform .25s ease;
+}
+.save-btn.is-saved{background:var(--gold-bright); border-color:var(--gold-bright);}
+.save-btn.is-saved svg{fill:var(--ink); stroke:var(--ink); transform:scale(1.06);}
+
+/* brief confirmation after a tap */
+.save-toast{
+  position:fixed;
+  left:50%;
+  bottom:calc(104px + env(safe-area-inset-bottom));
+  z-index:230;
+  transform:translate(-50%, 14px);
+  padding:11px 20px;
+  border:1px solid rgba(217,172,92,0.5);
+  background:rgba(24,18,9,0.94);
+  color:var(--cream);
+  font-family:var(--font-label);
+  font-size:0.7rem;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  border-radius:30px;
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .25s ease, transform .25s ease;
+}
+.save-toast.is-visible{opacity:1; transform:translate(-50%, 0);}
+
+/* save control inside the quick-view sheet */
+.quick-view-actions{grid-template-columns:1fr 1fr;}
+.quick-view-save{grid-column:1/-1; gap:9px;}
+.quick-view-save svg{width:16px; height:16px; fill:none; stroke:currentColor; stroke-width:1.6;}
+.quick-view-save.is-saved{
+  background:var(--gold-bright);
+  border-color:var(--gold-bright);
+  color:var(--ink);
+}
+.quick-view-save.is-saved svg{fill:currentColor;}
+
+/* ---------- 2. stock states ------------------------------------ */
+
+.prod-card.is-sold-out .prod-media img{
+  filter:grayscale(0.5) contrast(0.94);
+  opacity:0.55;
+}
+.prod-card.is-sold-out:hover .prod-media img{transform:none;}
+.prod-card.is-sold-out .prod-badge{
+  background:#4d453a;
+  color:#e8e0d2;
+  border-color:rgba(232,224,210,0.35);
+}
+.sold-out-tag{
+  position:absolute;
+  left:50%; top:50%;
+  z-index:2;
+  transform:translate(-50%,-50%);
+  padding:9px 18px;
+  background:rgba(24,18,9,0.88);
+  border:1px solid rgba(217,172,92,0.55);
+  color:var(--gold-bright);
+  font-family:var(--font-label);
+  font-size:0.66rem;
+  letter-spacing:0.24em;
+  text-transform:uppercase;
+  white-space:nowrap;
+  pointer-events:none;
+}
+
+.stock-line{
+  display:flex;
+  align-items:center;
+  gap:7px;
+  margin-top:9px;
+  font-family:var(--font-label);
+  font-size:0.64rem;
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+}
+.stock-line::before{
+  content:"";
+  width:6px; height:6px;
+  border-radius:50%;
+  background:currentColor;
+  flex:0 0 auto;
+}
+.stock-line.is-out{color:#8a7a63;}
+.stock-line.is-low{color:#a8482f;}
+
+/* sold-out cards swap the WhatsApp enquiry for a restock alert */
+.enquire-btn.is-notify{background:var(--ink);}
+.enquire-btn.is-notify:hover{background:var(--gold-deep);}
+.enquire-btn.is-notify svg{fill:var(--gold-bright);}
+
+.enquire-label{display:none;}
+
+/* ---------- 3. sticky filters + touch feedback ------------------ */
+
+@media(max-width:900px){
+  /* horizontal, swipeable filter rail instead of a wrapped block,
+     pinned under the header so switching category never needs a
+     scroll back to the top of a long collection */
+  .filter-row{
+    position:sticky;
+    top:var(--header-h, 64px);
+    z-index:40;
+    background:var(--parchment);
+    justify-content:flex-start;
+    flex-wrap:nowrap;
+    overflow-x:auto;
+    margin:0 -22px 16px;
+    padding:10px 22px;
+    scroll-snap-type:x proximity;
+    scrollbar-width:none;
+    -webkit-overflow-scrolling:touch;
+  }
+  .filter-row::-webkit-scrollbar{display:none;}
+  .filter-pill{flex:0 0 auto; min-height:40px; scroll-snap-align:start; display:inline-flex; align-items:center;}
+  .filter-pill:active{transform:scale(0.95);}
+  .prod-card:active{transform:scale(0.985);}
+}
+
+.enquire-btn:active{transform:scale(0.94);}
+.wa-btn:active{transform:scale(0.97);}
+
+@media(max-width:560px){
+  /* a touch more room for the grid than the page default */
+  .wrap{padding:0 16px;}
+  .filter-row{margin-left:-16px; margin-right:-16px; padding-left:16px; padding-right:16px;}
+
+  .page-hero{padding:14px 0 26px;}
+  .page-hero h1{font-size:1.95rem; line-height:1.12;}
+  .page-hero p{font-size:0.92rem;}
+
+  .wa-banner{padding:20px 20px; border-radius:16px; margin-bottom:28px;}
+  .wa-banner .text h3{font-size:1.15rem;}
+  .wa-banner .text p{font-size:0.86rem;}
+  .wa-btn{min-height:46px; width:100%; justify-content:center;}
+
+  /* ---------- 4. premium mobile layout: two per row -------------- */
+  .prod-grid{gap:12px;}
+  .prod-card{
+    border-radius:14px;
+    box-shadow:0 8px 20px rgba(24,18,9,0.07);
+    display:flex;
+    flex-direction:column;
+  }
+  .prod-card:hover{transform:none; box-shadow:0 8px 20px rgba(24,18,9,0.07);}
+  .prod-media{aspect-ratio:4/5;}
+
+  .prod-body{
+    flex:1;
+    flex-direction:column;
+    align-items:stretch;
+    gap:10px;
+    padding:11px 12px 13px;
+  }
+  .prod-info{display:flex; flex-direction:column;}
+  .prod-body h3{font-size:0.92rem; line-height:1.24; margin-bottom:2px;}
+  .prod-body .sub{font-size:0.56rem; letter-spacing:0.08em; margin-bottom:8px;}
+  .prod-card .price-row{margin-top:auto; gap:6px;}
+  .prod-card .price-now{font-size:0.92rem;}
+  .prod-card .price-was{font-size:0.7rem;}
+  .prod-card .price-off{font-size:0.56rem;}
+  .stock-line{font-size:0.56rem; margin-top:7px;}
+
+  /* full-width labelled action instead of a floating circle */
+  .enquire-btn{
+    width:100%;
+    height:44px;
+    border-radius:10px;
+    gap:8px;
+  }
+  .enquire-btn svg{width:17px; height:17px;}
+  .enquire-label{
+    display:inline;
+    color:#fff;
+    font-family:var(--font-label);
+    font-size:0.62rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+  }
+
+  .save-btn{width:38px; height:38px; top:9px; right:9px;}
+  .save-btn svg{width:17px; height:17px;}
+  .sold-out-tag{font-size:0.56rem; letter-spacing:0.18em; padding:7px 12px;}
+  .prod-badge{font-size:0.55rem; padding:5px 8px; top:9px; left:9px;}
+}
+
+@media(max-width:380px){
+  .prod-grid{gap:10px;}
+  .prod-body h3{font-size:0.86rem;}
+  .prod-body{padding:10px 10px 12px;}
+}

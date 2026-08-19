@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Nivarika — Crafted Elegance for Your Home</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="media/css/fonts.css">
 <link rel="stylesheet" href="media/css/styles.css">
 </head>
@@ -41,6 +40,10 @@
     <nav class="navlinks right">
       <a href="living.html">Living</a>
       <a href="#story">Our Story</a>
+      <button type="button" class="nav-saved-btn" data-open-saved aria-label="View saved items">
+        <span class="nav-icon" aria-hidden="true">&#9825;<span class="nav-badge" data-saved-count hidden>0</span></span>
+        Saved
+      </button>
     </nav>
   </div>
 </header>
@@ -105,7 +108,7 @@
         </div>
         <div class="cat-body">
           <h3>Glassware</h3>
-          <div class="sub">Hand-cut Crystal &middot; View all styles &rarr;</div>
+          <div class="sub">Hand-cut Crystal</div>
         </div>
       </a>
 
@@ -118,7 +121,7 @@
         </div>
         <div class="cat-body">
           <h3>Dinnerware</h3>
-          <div class="sub">Gold-rimmed Porcelain &middot; View all styles &rarr;</div>
+          <div class="sub">Gold-rimmed Porcelain</div>
         </div>
       </a>
 
@@ -131,7 +134,7 @@
         </div>
         <div class="cat-body">
           <h3>Bangles</h3>
-          <div class="sub">Hand-strung Kundan &middot; View all styles &rarr;</div>
+          <div class="sub">Hand-strung Kundan</div>
         </div>
       </a>
 
@@ -144,7 +147,7 @@
         </div>
         <div class="cat-body">
           <h3>Living</h3>
-          <div class="sub">Lanterns &amp; Décor &middot; View all styles &rarr;</div>
+          <div class="sub">Lanterns &amp; Décor</div>
         </div>
       </a>
 
@@ -242,10 +245,11 @@
 <nav class="mobile-bottom-nav" aria-label="Quick navigation">
   <a href="#" aria-label="Home"><span aria-hidden="true">⌂</span>Home</a>
   <a href="#glassware" aria-label="Shop"><span aria-hidden="true">◇</span>Shop</a>
-  <a href="#story" aria-label="Our story"><span aria-hidden="true">✦</span>Story</a>
+  <button type="button" data-open-saved aria-label="Saved items"><span class="nav-icon" aria-hidden="true">&#9825;<span class="nav-badge" data-saved-count hidden>0</span></span>Saved</button>
   <a href="https://chat.whatsapp.com/YOUR_GROUP_INVITE_LINK" target="_blank" rel="noopener" aria-label="Chat on WhatsApp"><span aria-hidden="true">◌</span>Chat</a>
 </nav>
 
+<script src="media/js/saved.js"></script>
 <script>
   const menuButton = document.querySelector('.mobile-menu-toggle');
   const navigationLinks = document.querySelectorAll('.navlinks');
