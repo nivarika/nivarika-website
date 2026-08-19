@@ -1,7 +1,15 @@
 .product-quick-view{position:fixed; inset:0; z-index:200; display:none; align-items:flex-end; background:rgba(24,18,9,0.62); backdrop-filter:blur(5px);}
 .product-quick-view.is-open{display:flex;}
 .quick-view-sheet{width:100%; max-width:620px; margin:0 auto; background:var(--parchment,#fbf6ec); border-radius:24px 24px 0 0; overflow:hidden; box-shadow:0 -14px 40px rgba(0,0,0,0.25); animation:quick-view-up .24s ease-out;}
-.quick-view-image{width:100%; max-height:52vh; object-fit:cover; display:block; background:var(--cream-2,#efe4d0);}
+.quick-view-image{width:100%; max-height:52vh; object-fit:cover; display:block; background:var(--cream-2,#efe4d0); transition:object-position .25s ease;}
+.quick-view-image[data-view="view-0"]{object-position:center;}
+.quick-view-image[data-view="view-1"]{object-position:left center;}
+.quick-view-image[data-view="view-2"]{object-position:right center;}
+.quick-view-gallery{display:flex; gap:9px; overflow-x:auto; padding:12px 16px 0; background:var(--parchment,#fbf6ec); scrollbar-width:none;}
+.quick-view-gallery::-webkit-scrollbar{display:none;}
+.quick-view-thumb{flex:0 0 62px; height:62px; padding:0; border:2px solid transparent; background:transparent; cursor:pointer; overflow:hidden;}
+.quick-view-thumb.is-active{border-color:var(--gold,#b6893f);}
+.quick-view-thumb img{width:100%; height:100%; object-fit:cover; display:block;}
 .quick-view-content{position:relative; padding:22px 22px calc(22px + env(safe-area-inset-bottom));}
 .quick-view-close{position:absolute; right:16px; top:-44px; width:34px; height:34px; border:1px solid rgba(247,240,227,0.7); border-radius:50%; background:rgba(24,18,9,0.75); color:#fff; font-size:1.35rem; line-height:1; cursor:pointer;}
 .quick-view-title{font-family:'Cormorant Garamond',serif; font-size:1.75rem; line-height:1.1; padding-right:36px; color:var(--ink,#181209);}
