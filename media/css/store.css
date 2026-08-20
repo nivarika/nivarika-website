@@ -107,6 +107,10 @@
   align-items:center;
   gap:7px;
   margin-top:9px;
+  /* a fixed line height — identical whether a card is out of stock, low,
+     or has nothing to say — so the price row below it lands on the same
+     baseline across every card in a row regardless of stock status */
+  height:1.5em;
   font-family:var(--font-label);
   font-size:0.64rem;
   letter-spacing:0.1em;
@@ -119,8 +123,15 @@
   background:currentColor;
   flex:0 0 auto;
 }
+.stock-line span{
+  overflow:hidden;
+  white-space:nowrap;
+  text-overflow:ellipsis;
+  min-width:0;
+}
 .stock-line.is-out{color:#8a7a63;}
 .stock-line.is-low{color:#a8482f;}
+.stock-line.is-empty{visibility:hidden;}
 
 /* sold-out cards swap the WhatsApp enquiry for a restock alert */
 .enquire-btn.is-notify{background:var(--ink);}
@@ -145,6 +156,11 @@
     overflow-x:auto;
     margin:0 -22px 16px;
     padding:10px 22px;
+    /* scroll-snap ignores plain padding for its start/end anchor —
+       scroll-padding is what keeps the first/last pill inset instead
+       of snapping flush against the screen edge */
+    scroll-padding-left:22px;
+    scroll-padding-right:22px;
     scroll-snap-type:x proximity;
     scrollbar-width:none;
     -webkit-overflow-scrolling:touch;
@@ -161,7 +177,7 @@
 @media(max-width:560px){
   /* a touch more room for the grid than the page default */
   .wrap{padding:0 16px;}
-  .filter-row{margin-left:-16px; margin-right:-16px; padding-left:16px; padding-right:16px;}
+  .filter-row{margin-left:-16px; margin-right:-16px; padding-left:16px; padding-right:16px; scroll-padding-left:16px; scroll-padding-right:16px;}
 
   .page-hero{padding:14px 0 26px;}
   .page-hero h1{font-size:1.95rem; line-height:1.12;}
@@ -205,15 +221,20 @@
     height:44px;
     border-radius:10px;
     gap:8px;
+    background:linear-gradient(135deg, var(--wa) 0%, var(--wa-dark) 100%);
+    box-shadow:0 8px 18px rgba(30,169,82,0.32);
   }
+  .enquire-btn:hover{background:linear-gradient(135deg, var(--wa-dark) 0%, var(--wa) 100%);}
   .enquire-btn svg{width:17px; height:17px;}
   .enquire-label{
     display:inline;
     color:#fff;
     font-family:var(--font-label);
-    font-size:0.62rem;
-    letter-spacing:0.14em;
+    font-size:0.68rem;
+    font-weight:500;
+    letter-spacing:0.1em;
     text-transform:uppercase;
+    text-shadow:0 1px 1px rgba(0,0,0,0.15);
   }
 
   .save-btn{width:38px; height:38px; top:9px; right:9px;}

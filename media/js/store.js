@@ -50,18 +50,21 @@
     card.dataset.stockState = stock;
 
     /* stock treatment */
+    // Every card gets a stock-line — even well-stocked ones get an empty,
+    // fixed-height placeholder — so one card's "Only a few left" (or a
+    // sold-out message) can never push its price row out of alignment
+    // with the rest of the row.
+    var stockLine = document.createElement('div');
+    var stockText = document.createElement('span');
     if (stock === 'out') {
       card.classList.add('is-sold-out');
+      stockLine.className = 'stock-line is-out';
+      stockText.textContent = 'Sold out — ask for restock';
 
       var tag = document.createElement('span');
       tag.className = 'sold-out-tag';
       tag.textContent = 'Sold Out';
       media.appendChild(tag);
-
-      var outLine = document.createElement('div');
-      outLine.className = 'stock-line is-out';
-      outLine.textContent = 'Sold out — ask for restock';
-      info.appendChild(outLine);
 
       if (enquire) {
         enquire.classList.add('is-notify');
@@ -69,19 +72,21 @@
         enquire.setAttribute('title', 'Ask us to notify you when this is back in stock');
         enquire.setAttribute('aria-label', 'Ask us to notify you when this is back in stock');
       }
+    } else if (stock === 'low') {
+      stockLine.className = 'stock-line is-low';
+      stockText.textContent = 'Only a few left';
     } else {
-      if (stock === 'low') {
-        var lowLine = document.createElement('div');
-        lowLine.className = 'stock-line is-low';
-        lowLine.textContent = 'Only a few left';
-        info.appendChild(lowLine);
-      }
-      if (enquire && !enquire.querySelector('.enquire-label')) {
-        var label = document.createElement('span');
-        label.className = 'enquire-label';
-        label.textContent = 'Enquire';
-        enquire.appendChild(label);
-      }
+      stockLine.className = 'stock-line is-empty';
+      stockText.textContent = ' ';
+    }
+    stockLine.appendChild(stockText);
+    info.appendChild(stockLine);
+
+    if (stock !== 'out' && enquire && !enquire.querySelector('.enquire-label')) {
+      var label = document.createElement('span');
+      label.className = 'enquire-label';
+      label.textContent = 'Chat';
+      enquire.appendChild(label);
     }
 
     /* save for later */

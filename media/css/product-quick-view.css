@@ -15,8 +15,31 @@
 .quick-view-title{font-family:var(--font-display); font-size:1.75rem; line-height:1.1; padding-right:36px; color:var(--ink,#181209);}
 .quick-view-price{margin:7px 0 18px; font-family:var(--font-label); color:var(--gold-deep,#7c5a26);}
 .quick-view-actions{display:grid; grid-template-columns:1fr 1fr; gap:10px;}
-.quick-view-actions a,.quick-view-actions button{min-height:48px; display:flex; align-items:center; justify-content:center; padding:10px 14px; border:1px solid var(--gold-deep,#7c5a26); background:transparent; color:var(--ink,#181209); font:0.68rem var(--font-label); letter-spacing:.1em; text-transform:uppercase; cursor:pointer;}
-.quick-view-actions .quick-view-chat{background:var(--ink,#181209); color:var(--gold-bright,#d9ac5c); border-color:var(--ink,#181209);}
+.quick-view-actions a,.quick-view-actions button{
+  min-height:48px; display:flex; align-items:center; justify-content:center; gap:7px;
+  padding:10px 12px; border:1px solid var(--gold-deep,#7c5a26); background:transparent;
+  color:var(--ink,#181209); font:0.66rem var(--font-label); letter-spacing:.06em;
+  text-transform:uppercase; text-align:center; cursor:pointer;
+  transition:background .25s ease, color .25s ease, transform .25s ease;
+}
+
+/* continue browsing / chat on whatsapp: icon + label side by side */
+.quick-view-continue svg,
+.quick-view-chat svg{width:16px; height:16px; flex:0 0 auto;}
+.quick-view-continue svg{fill:none; stroke:currentColor;}
+.quick-view-continue:hover{background:var(--cream-2,#efe4d0);}
+.quick-view-actions .quick-view-chat{
+  background:var(--wa,#25D366);
+  color:#fff;
+  border-color:var(--wa,#25D366);
+}
+.quick-view-actions .quick-view-chat svg{fill:#fff;}
+.quick-view-actions .quick-view-chat:hover{background:var(--wa-dark,#1ea952);}
+.quick-view-continue:active,
+.quick-view-chat:active{transform:scale(0.97);}
+@media(max-width:360px){
+  .quick-view-actions a,.quick-view-actions button{font-size:0.6rem; letter-spacing:0.03em; padding:10px 8px;}
+}
 .prod-media{cursor:zoom-in;}
 .prod-media:focus-visible{outline:3px solid var(--gold-bright,#d9ac5c); outline-offset:3px;}
 body.quick-view-open{overflow:hidden;}

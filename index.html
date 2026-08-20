@@ -191,9 +191,13 @@
     <h2>Choose a Mood</h2>
     <p>Select a feeling to see how our curated pieces bring each style to life.</p>
     <div class="mood-pills">
-      <div class="pill" onclick="setMood(this)"><span class="dot"></span>Festive Glow</div>
-      <div class="pill active" onclick="setMood(this)"><span class="dot"></span>Quiet Minimal</div>
-      <div class="pill" onclick="setMood(this)"><span class="dot"></span>Modern Heritage</div>
+      <button type="button" class="pill" data-mood="festive" aria-pressed="false" onclick="setMood(this)"><span class="dot"></span>Festive Glow</button>
+      <button type="button" class="pill active" data-mood="minimal" aria-pressed="true" onclick="setMood(this)"><span class="dot"></span>Quiet Minimal</button>
+      <button type="button" class="pill" data-mood="heritage" aria-pressed="false" onclick="setMood(this)"><span class="dot"></span>Modern Heritage</button>
+    </div>
+    <div class="mood-picks">
+      <p class="mood-caption" id="moodCaption"></p>
+      <div class="mood-pick-grid" id="moodPickGrid"></div>
     </div>
   </div>
 </section>
@@ -267,10 +271,66 @@
     navigationLinks.forEach(item => item.classList.remove('is-open'));
   }));
 
-  function setMood(el){
-    document.querySelectorAll('.pill').forEach(p=>p.classList.remove('active'));
-    el.classList.add('active');
+  const MOODS = {
+    festive: {
+      caption: 'Bold gold, warm candlelight and a table set to celebrate — the pieces we reach for at weddings, Diwali, and big family nights in.',
+      picks: [
+        { page:'glassware', slug:'champagne-flute-set-of-6', title:'Champagne Flute — Set of 6', price:'₹2,399', image:'https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=500&q=80&auto=format&fit=crop' },
+        { page:'bangles', slug:'kundan-stack-set-of-6', title:'Kundan Stack — Set of 6', price:'₹1,749', image:'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=500&q=80&auto=format&fit=crop' },
+        { page:'living', slug:'taper-candle-holders-set-of-3', title:'Taper Candle Holders — Set of 3', price:'₹1,499', image:'https://images.unsplash.com/photo-1589669590415-92f731d6d892?w=500&q=80&auto=format&fit=crop' }
+      ]
+    },
+    minimal: {
+      caption: 'Understated elegance for the everyday — clean lines and soft gold that never shout.',
+      picks: [
+        { page:'glassware', slug:'whiskey-tumblers-set-of-4', title:'Whiskey Tumblers — Set of 4', price:'₹1,899', image:'https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=500&q=80&auto=format&fit=crop' },
+        { page:'bangles', slug:'everyday-slim-set-4pc', title:'Everyday Slim Set — 4pc', price:'₹999', image:'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=500&q=80&auto=format&fit=crop' },
+        { page:'living', slug:'round-serving-tray', title:'Round Serving Tray', price:'₹1,999', image:'https://images.unsplash.com/photo-1589669590415-92f731d6d892?w=500&q=80&auto=format&fit=crop' }
+      ]
+    },
+    heritage: {
+      caption: 'Traditional craft, contemporary silhouette — where temple motifs meet a modern table.',
+      picks: [
+        { page:'glassware', slug:'martini-coupe-set', title:'Martini & Coupe Set', price:'₹2,799', image:'https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=500&q=80&auto=format&fit=crop' },
+        { page:'bangles', slug:'temple-gold-pair', title:'Temple Gold Pair', price:'₹2,199', image:'https://images.unsplash.com/photo-1611652022419-a9419f74343d?w=500&q=80&auto=format&fit=crop' },
+        { page:'living', slug:'hammered-gold-vase', title:'Hammered Gold Vase', price:'₹2,299', image:'https://images.unsplash.com/photo-1589669590415-92f731d6d892?w=500&q=80&auto=format&fit=crop' }
+      ]
+    }
+  };
+
+  const moodCaption = document.getElementById('moodCaption');
+  const moodPickGrid = document.getElementById('moodPickGrid');
+
+  function renderMood(key){
+    const data = MOODS[key];
+    moodCaption.style.opacity = 0;
+    moodPickGrid.style.opacity = 0;
+    setTimeout(() => {
+      moodCaption.textContent = data.caption;
+      moodPickGrid.innerHTML = data.picks.map(pick => `
+        <a class="mood-pick" href="${pick.page}.html#${pick.slug}">
+          <img src="${pick.image}" alt="${pick.title}" loading="lazy" onerror="this.style.display='none'">
+          <div class="mood-pick-info">
+            <h4>${pick.title}</h4>
+            <span>${pick.price}</span>
+          </div>
+        </a>`).join('');
+      moodCaption.style.opacity = 1;
+      moodPickGrid.style.opacity = 1;
+    }, 160);
   }
+
+  function setMood(el){
+    document.querySelectorAll('.pill').forEach(p => {
+      p.classList.remove('active');
+      p.setAttribute('aria-pressed', 'false');
+    });
+    el.classList.add('active');
+    el.setAttribute('aria-pressed', 'true');
+    renderMood(el.dataset.mood);
+  }
+
+  renderMood('minimal');
 </script>
 
 </body>
