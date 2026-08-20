@@ -11,7 +11,7 @@
 
 <div class="topbar">
   <div class="wrap">
-    <span>&#9742; +91 98 4021 6600</span>
+    <span>&#9742; +91 99112 92210</span>
     <span>Complimentary shipping across India</span>
   </div>
 </div>
@@ -22,10 +22,11 @@
       <a href="glassware.html">Glassware</a>
       <a href="dinnerware.html">Dinnerware</a>
       <a href="bangles.html">Bangles</a>
+      <a href="living.html">Living</a>
     </nav>
     <div class="brandmark">
       <a href="index.html" aria-label="Nivarika home">
-      <svg width="34" height="34" viewBox="0 0 34 34" fill="none">
+      <svg width="30" height="30" viewBox="0 0 34 34" fill="none">
         <path d="M17 3C17 3 21 8 21 13C21 17.4 19.4 19 17 19C14.6 19 13 17.4 13 13C13 8 17 3 17 3Z" stroke="#d9ac5c" stroke-width="1"/>
         <path d="M6 19C10 15 24 15 28 19" stroke="#d9ac5c" stroke-width="1"/>
         <path d="M9 22C13 26 21 26 25 22" stroke="#d9ac5c" stroke-width="1"/>
@@ -38,9 +39,11 @@
       <span></span><span></span><span></span>
     </button>
     <nav class="navlinks right">
-      <a href="living.html">Living</a>
       <a href="#story">Our Story</a>
-      <button type="button" class="nav-saved-btn" data-open-saved aria-label="View saved items">
+      <button type="button" class="nav-icon-btn" data-open-search aria-label="Search products">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.2" y2="16.2" stroke-linecap="round"/></svg> Search
+      </button>
+      <button type="button" class="nav-icon-btn" data-open-saved aria-label="View saved items">
         <span class="nav-icon" aria-hidden="true">&#9825;<span class="nav-badge" data-saved-count hidden>0</span></span>
         Saved
       </button>
@@ -229,9 +232,9 @@
       <div>
         <h4>Contact</h4>
         <ul>
-          <li>+91 98 4021 6600</li>
-          <li>hello@nivarika.com</li>
-          <li>www.nivarika.com</li>
+          <li>+91 99112 92210</li>
+          <li>hello@nivarika.in</li>
+          <li>www.nivarika.in</li>
         </ul>
       </div>
     </div>
@@ -249,11 +252,13 @@
 <nav class="mobile-bottom-nav" aria-label="Quick navigation">
   <a href="#" aria-label="Home"><span aria-hidden="true">⌂</span>Home</a>
   <a href="#glassware" aria-label="Shop"><span aria-hidden="true">◇</span>Shop</a>
+  <button type="button" data-open-search aria-label="Search products"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.2" y2="16.2" stroke-linecap="round"/></svg>Search</button>
   <button type="button" data-open-saved aria-label="Saved items"><span class="nav-icon" aria-hidden="true">&#9825;<span class="nav-badge" data-saved-count hidden>0</span></span>Saved</button>
   <a href="https://chat.whatsapp.com/YOUR_GROUP_INVITE_LINK" target="_blank" rel="noopener" aria-label="Chat on WhatsApp"><span aria-hidden="true">◌</span>Chat</a>
 </nav>
 
 <script src="media/js/saved.js"></script>
+<script src="media/js/search.js"></script>
 <script>
   const menuButton = document.querySelector('.mobile-menu-toggle');
   const navigationLinks = document.querySelectorAll('.navlinks');

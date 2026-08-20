@@ -28,6 +28,48 @@
     return pageKey + '::' + title.replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
   }
 
+  /* Swap an enquiry link's pre-filled text for a restock-request one,
+     keeping the same phone number and product-page link that were
+     baked into the page's markup. */
+  function toRestockLink(href) {
+    try {
+      var url = new URL(href);
+      var current = decodeURIComponent(url.searchParams.get('text') || '');
+      var productUrl = current.split(' ').pop();
+      return url.origin + url.pathname + '?text=' + encodeURIComponent(
+        'Hi Nivarika! Please notify me when this piece is back in stock: ' + productUrl
+      );
+    } catch (e) {
+      return href;
+    }
+  }
+
+  /* Best-effort: hand the product photo itself to the OS share sheet
+     (WhatsApp included) on browsers that support sharing files. Falls
+     straight through to the normal wa.me link — pre-filled text, no
+     attachment — everywhere else, since a plain web link genuinely
+     cannot attach an image to a WhatsApp message on its own. */
+  function enableImageShare(link, getImage) {
+    link.addEventListener('click', function (event) {
+      if (!(navigator.share && navigator.canShare)) return;
+      var img = getImage();
+      var waHref = link.href;
+      if (!img || !(img.currentSrc || img.src)) return;
+      event.preventDefault();
+      fetch(img.currentSrc || img.src)
+        .then(function (resp) { if (!resp.ok) throw new Error('image fetch failed'); return resp.blob(); })
+        .then(function (blob) {
+          var file = new File([blob], 'nivarika-product.jpg', { type: blob.type || 'image/jpeg' });
+          if (!navigator.canShare({ files: [file] })) throw new Error('file sharing unsupported');
+          var text = decodeURIComponent(new URL(waHref).searchParams.get('text') || '');
+          return navigator.share({ files: [file], text: text });
+        })
+        .catch(function () {
+          window.location.href = waHref;
+        });
+    });
+  }
+
   function syncSaveButton(button, id) {
     var on = Saved.isSaved(id);
     button.classList.toggle('is-saved', on);
@@ -68,6 +110,7 @@
 
       if (enquire) {
         enquire.classList.add('is-notify');
+        enquire.href = toRestockLink(enquire.href);
         enquire.innerHTML = BELL + '<span class="enquire-label">Notify me</span>';
         enquire.setAttribute('title', 'Ask us to notify you when this is back in stock');
         enquire.setAttribute('aria-label', 'Ask us to notify you when this is back in stock');
@@ -87,6 +130,10 @@
       label.className = 'enquire-label';
       label.textContent = 'Chat';
       enquire.appendChild(label);
+    }
+
+    if (enquire) {
+      enableImageShare(enquire, function () { return card.querySelector('.prod-media img'); });
     }
 
     /* save for later */
@@ -120,11 +167,23 @@
     syncQuickViewSave();
   });
 
-  /* Sold-out pieces stay browsable but drop to the end of the grid. */
+  /* Sold-out pieces stay browsable but drop to the end of the grid.
+     Original merchandised order is stashed too, since sorting needs
+     a stable "Featured" baseline to return to, and needs to redo the
+     sold-out partition itself every time the order changes. */
+  cards.forEach(function (card, index) { card.dataset.originalIndex = index; });
   cards.filter(function (card) { return card.dataset.stockState === 'out'; })
     .forEach(function (card) { grid.appendChild(card); });
 
-  /* ---------- category filter --------------------------------- */
+  /* ---------- category filter + results count -------------------- */
+
+  var resultsCount = document.getElementById('resultsCount');
+
+  function updateResultsCount() {
+    if (!resultsCount) return;
+    var visible = cards.filter(function (card) { return card.style.display !== 'none'; }).length;
+    resultsCount.textContent = visible + (visible === 1 ? ' piece' : ' pieces');
+  }
 
   document.querySelectorAll('.filter-pill').forEach(function (pill) {
     pill.addEventListener('click', function () {
@@ -135,8 +194,35 @@
         var cat = card.getAttribute('data-category');
         card.style.display = (filter === 'All' || cat === filter) ? '' : 'none';
       });
+      updateResultsCount();
     });
   });
+  updateResultsCount();
+
+  /* ---------- sort ------------------------------------------------- */
+
+  function priceValue(card) {
+    var el = card.querySelector('.price-now');
+    return el ? (parseFloat(el.textContent.replace(/[^0-9.]/g, '')) || 0) : 0;
+  }
+
+  var sortSelect = document.getElementById('sortSelect');
+  if (sortSelect) {
+    sortSelect.addEventListener('change', function () {
+      var mode = sortSelect.value;
+      var sorted = cards.slice().sort(function (a, b) {
+        // sold-out pieces always sort last, whatever the chosen order
+        var aOut = a.dataset.stockState === 'out' ? 1 : 0;
+        var bOut = b.dataset.stockState === 'out' ? 1 : 0;
+        if (aOut !== bOut) return aOut - bOut;
+
+        if (mode === 'price-asc') return priceValue(a) - priceValue(b);
+        if (mode === 'price-desc') return priceValue(b) - priceValue(a);
+        return Number(a.dataset.originalIndex) - Number(b.dataset.originalIndex);
+      });
+      sorted.forEach(function (card) { grid.appendChild(card); });
+    });
+  }
 
   /* ---------- sticky filter row -------------------------------- */
 
@@ -188,15 +274,34 @@
       });
     });
 
+    var quickViewChat = quickView.querySelector('.quick-view-chat');
+    if (quickViewChat) {
+      enableImageShare(quickViewChat, function () {
+        return quickView.querySelector('.quick-view-image');
+      });
+    }
+
     // The sheet is repopulated in place, so watch it rather than
     // reaching into the page's own quick-view function.
-    new MutationObserver(syncQuickViewSave).observe(quickView, {
+    new MutationObserver(function () {
+      syncQuickViewSave();
+      syncQuickViewChat();
+    }).observe(quickView, {
       subtree: true,
       childList: true,
       characterData: true,
       attributes: true,
       attributeFilter: ['class']
     });
+  }
+
+  function syncQuickViewChat() {
+    if (!quickViewChat) return;
+    var card = currentQuickViewCard();
+    var cardEnquire = card && card.querySelector('.enquire-btn');
+    if (cardEnquire && quickViewChat.getAttribute('href') !== cardEnquire.href) {
+      quickViewChat.href = cardEnquire.href;
+    }
   }
 
   function currentQuickViewCard() {

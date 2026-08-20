@@ -179,6 +179,11 @@
   .wrap{padding:0 16px;}
   .filter-row{margin-left:-16px; margin-right:-16px; padding-left:16px; padding-right:16px; scroll-padding-left:16px; scroll-padding-right:16px;}
 
+  .products-toolbar{margin-bottom:14px;}
+  .results-count{font-size:0.7rem;}
+  .sort-control span{display:none;}
+  .sort-control select{padding:6px 26px 6px 10px; font-size:0.68rem;}
+
   .page-hero{padding:14px 0 26px;}
   .page-hero h1{font-size:1.95rem; line-height:1.12;}
   .page-hero p{font-size:0.92rem;}

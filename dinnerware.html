@@ -13,7 +13,7 @@
 
 <div class="topbar">
   <div class="wrap">
-    <span>&#9742; +91 98 4021 6600</span>
+    <span>&#9742; +91 99112 92210</span>
     <span>Complimentary shipping across India</span>
   </div>
 </div>
@@ -24,10 +24,11 @@
       <a href="glassware.html">Glassware</a>
       <a href="dinnerware.html">Dinnerware</a>
       <a href="bangles.html">Bangles</a>
+      <a href="living.html">Living</a>
     </nav>
     <div class="brandmark">
       <a href="index.html" aria-label="Nivarika home">
-      <svg width="30" height="30" viewBox="0 0 34 34" fill="none" style="margin:0 auto 4px;">
+      <svg width="30" height="30" viewBox="0 0 34 34" fill="none">
         <path d="M17 3C17 3 21 8 21 13C21 17.4 19.4 19 17 19C14.6 19 13 17.4 13 13C13 8 17 3 17 3Z" stroke="#d9ac5c" stroke-width="1"/>
         <path d="M6 19C10 15 24 15 28 19" stroke="#d9ac5c" stroke-width="1"/>
         <path d="M9 22C13 26 21 26 25 22" stroke="#d9ac5c" stroke-width="1"/>
@@ -40,9 +41,11 @@
       <span></span><span></span><span></span>
     </button>
     <nav class="navlinks right">
-      <a href="living.html">Living</a>
       <a href="index.html#story">Our Story</a>
-      <button type="button" class="nav-saved-btn" data-open-saved aria-label="View saved items">
+      <button type="button" class="nav-icon-btn" data-open-search aria-label="Search products">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.2" y2="16.2" stroke-linecap="round"/></svg> Search
+      </button>
+      <button type="button" class="nav-icon-btn" data-open-saved aria-label="View saved items">
         <span class="nav-icon" aria-hidden="true">&#9825;<span class="nav-badge" data-saved-count hidden>0</span></span>
         Saved
       </button>
@@ -85,6 +88,18 @@
       <div class="filter-pill" data-filter="Full Sets">Full Sets</div>
     </div>
 
+    <div class="products-toolbar">
+      <p class="results-count" id="resultsCount"></p>
+      <label class="sort-control">
+        <span>Sort</span>
+        <select id="sortSelect">
+          <option value="featured">Featured</option>
+          <option value="price-asc">Price: Low to High</option>
+          <option value="price-desc">Price: High to Low</option>
+        </select>
+      </label>
+    </div>
+
     <div class="prod-grid">
 
       <div class="prod-card" data-category="Plates">
@@ -102,7 +117,7 @@
               <span class="price-off">Save 15%</span>
             </div>
           </div>
-          <a class="enquire-btn" href="https://chat.whatsapp.com/YOUR_GROUP_INVITE_LINK" target="_blank" rel="noopener" title="Chat on WhatsApp" aria-label="Chat on WhatsApp">
+          <a class="enquire-btn" href="https://wa.me/919911292210?text=Hi%20Nivarika%21%20I%27m%20interested%20in%20%2ADinner%20Plate%20Set%20%E2%80%94%206pc%2A%20%28%E2%82%B94%2C250%29.%20Could%20you%20share%20more%20details%3F%20https%3A//www.nivarika.in/dinnerware%23dinner-plate-set-6pc" target="_blank" rel="noopener" title="Chat on WhatsApp" aria-label="Chat on WhatsApp">
             <svg viewBox="0 0 32 32"><path d="M16.04 3C9.4 3 4 8.36 4 15c0 2.4.67 4.63 1.83 6.54L4 29l7.66-1.8A11.9 11.9 0 0 0 16.04 27C22.68 27 28 21.64 28 15S22.68 3 16.04 3zm0 21.6c-2 0-3.87-.55-5.47-1.5l-.39-.23-4.55 1.07 1.1-4.44-.26-.4A9.5 9.5 0 0 1 6.4 15c0-5.3 4.33-9.6 9.64-9.6 5.32 0 9.64 4.3 9.64 9.6s-4.32 9.6-9.64 9.6zm5.3-7.19c-.29-.15-1.7-.84-1.96-.93-.26-.1-.45-.15-.64.14-.19.29-.74.93-.9 1.12-.17.19-.33.22-.62.07-.29-.15-1.2-.44-2.29-1.4-.85-.75-1.42-1.68-1.59-1.97-.17-.29-.02-.44.13-.59.13-.13.29-.34.44-.5.15-.17.19-.29.29-.48.1-.19.05-.36-.02-.5-.07-.15-.64-1.54-.88-2.11-.23-.55-.47-.48-.64-.49-.17-.01-.36-.01-.55-.01-.19 0-.5.07-.76.36-.26.29-1 1-1 2.42 0 1.42 1.03 2.8 1.17 3 .15.19 2.03 3.1 4.92 4.34.69.3 1.23.48 1.65.61.69.22 1.32.19 1.82.11.55-.08 1.7-.7 1.94-1.37.24-.67.24-1.25.17-1.37-.07-.12-.26-.19-.55-.34z"/></svg>
           </a>
         </div>
@@ -123,7 +138,7 @@
               <span class="price-off">Save 20%</span>
             </div>
           </div>
-          <a class="enquire-btn" href="https://chat.whatsapp.com/YOUR_GROUP_INVITE_LINK" target="_blank" rel="noopener" title="Chat on WhatsApp" aria-label="Chat on WhatsApp">
+          <a class="enquire-btn" href="https://wa.me/919911292210?text=Hi%20Nivarika%21%20I%27m%20interested%20in%20%2ASide%20Plates%20%E2%80%94%20Set%20of%206%2A%20%28%E2%82%B92%2C199%29.%20Could%20you%20share%20more%20details%3F%20https%3A//www.nivarika.in/dinnerware%23side-plates-set-of-6" target="_blank" rel="noopener" title="Chat on WhatsApp" aria-label="Chat on WhatsApp">
             <svg viewBox="0 0 32 32"><path d="M16.04 3C9.4 3 4 8.36 4 15c0 2.4.67 4.63 1.83 6.54L4 29l7.66-1.8A11.9 11.9 0 0 0 16.04 27C22.68 27 28 21.64 28 15S22.68 3 16.04 3zm0 21.6c-2 0-3.87-.55-5.47-1.5l-.39-.23-4.55 1.07 1.1-4.44-.26-.4A9.5 9.5 0 0 1 6.4 15c0-5.3 4.33-9.6 9.64-9.6 5.32 0 9.64 4.3 9.64 9.6s-4.32 9.6-9.64 9.6zm5.3-7.19c-.29-.15-1.7-.84-1.96-.93-.26-.1-.45-.15-.64.14-.19.29-.74.93-.9 1.12-.17.19-.33.22-.62.07-.29-.15-1.2-.44-2.29-1.4-.85-.75-1.42-1.68-1.59-1.97-.17-.29-.02-.44.13-.59.13-.13.29-.34.44-.5.15-.17.19-.29.29-.48.1-.19.05-.36-.02-.5-.07-.15-.64-1.54-.88-2.11-.23-.55-.47-.48-.64-.49-.17-.01-.36-.01-.55-.01-.19 0-.5.07-.76.36-.26.29-1 1-1 2.42 0 1.42 1.03 2.8 1.17 3 .15.19 2.03 3.1 4.92 4.34.69.3 1.23.48 1.65.61.69.22 1.32.19 1.82.11.55-.08 1.7-.7 1.94-1.37.24-.67.24-1.25.17-1.37-.07-.12-.26-.19-.55-.34z"/></svg>
           </a>
         </div>
@@ -144,7 +159,7 @@
               <span class="price-off">Save 18%</span>
             </div>
           </div>
-          <a class="enquire-btn" href="https://chat.whatsapp.com/YOUR_GROUP_INVITE_LINK" target="_blank" rel="noopener" title="Chat on WhatsApp" aria-label="Chat on WhatsApp">
+          <a class="enquire-btn" href="https://wa.me/919911292210?text=Hi%20Nivarika%21%20I%27m%20interested%20in%20%2AServing%20Bowls%20%E2%80%94%20Set%20of%203%2A%20%28%E2%82%B92%2C899%29.%20Could%20you%20share%20more%20details%3F%20https%3A//www.nivarika.in/dinnerware%23serving-bowls-set-of-3" target="_blank" rel="noopener" title="Chat on WhatsApp" aria-label="Chat on WhatsApp">
             <svg viewBox="0 0 32 32"><path d="M16.04 3C9.4 3 4 8.36 4 15c0 2.4.67 4.63 1.83 6.54L4 29l7.66-1.8A11.9 11.9 0 0 0 16.04 27C22.68 27 28 21.64 28 15S22.68 3 16.04 3zm0 21.6c-2 0-3.87-.55-5.47-1.5l-.39-.23-4.55 1.07 1.1-4.44-.26-.4A9.5 9.5 0 0 1 6.4 15c0-5.3 4.33-9.6 9.64-9.6 5.32 0 9.64 4.3 9.64 9.6s-4.32 9.6-9.64 9.6zm5.3-7.19c-.29-.15-1.7-.84-1.96-.93-.26-.1-.45-.15-.64.14-.19.29-.74.93-.9 1.12-.17.19-.33.22-.62.07-.29-.15-1.2-.44-2.29-1.4-.85-.75-1.42-1.68-1.59-1.97-.17-.29-.02-.44.13-.59.13-.13.29-.34.44-.5.15-.17.19-.29.29-.48.1-.19.05-.36-.02-.5-.07-.15-.64-1.54-.88-2.11-.23-.55-.47-.48-.64-.49-.17-.01-.36-.01-.55-.01-.19 0-.5.07-.76.36-.26.29-1 1-1 2.42 0 1.42 1.03 2.8 1.17 3 .15.19 2.03 3.1 4.92 4.34.69.3 1.23.48 1.65.61.69.22 1.32.19 1.82.11.55-.08 1.7-.7 1.94-1.37.24-.67.24-1.25.17-1.37-.07-.12-.26-.19-.55-.34z"/></svg>
           </a>
         </div>
@@ -165,7 +180,7 @@
               <span class="price-off">Save 14%</span>
             </div>
           </div>
-          <a class="enquire-btn" href="https://chat.whatsapp.com/YOUR_GROUP_INVITE_LINK" target="_blank" rel="noopener" title="Chat on WhatsApp" aria-label="Chat on WhatsApp">
+          <a class="enquire-btn" href="https://wa.me/919911292210?text=Hi%20Nivarika%21%20I%27m%20interested%20in%20%2AGold%20Cutlery%20%E2%80%94%2024pc%2A%20%28%E2%82%B93%2C599%29.%20Could%20you%20share%20more%20details%3F%20https%3A//www.nivarika.in/dinnerware%23gold-cutlery-24pc" target="_blank" rel="noopener" title="Chat on WhatsApp" aria-label="Chat on WhatsApp">
             <svg viewBox="0 0 32 32"><path d="M16.04 3C9.4 3 4 8.36 4 15c0 2.4.67 4.63 1.83 6.54L4 29l7.66-1.8A11.9 11.9 0 0 0 16.04 27C22.68 27 28 21.64 28 15S22.68 3 16.04 3zm0 21.6c-2 0-3.87-.55-5.47-1.5l-.39-.23-4.55 1.07 1.1-4.44-.26-.4A9.5 9.5 0 0 1 6.4 15c0-5.3 4.33-9.6 9.64-9.6 5.32 0 9.64 4.3 9.64 9.6s-4.32 9.6-9.64 9.6zm5.3-7.19c-.29-.15-1.7-.84-1.96-.93-.26-.1-.45-.15-.64.14-.19.29-.74.93-.9 1.12-.17.19-.33.22-.62.07-.29-.15-1.2-.44-2.29-1.4-.85-.75-1.42-1.68-1.59-1.97-.17-.29-.02-.44.13-.59.13-.13.29-.34.44-.5.15-.17.19-.29.29-.48.1-.19.05-.36-.02-.5-.07-.15-.64-1.54-.88-2.11-.23-.55-.47-.48-.64-.49-.17-.01-.36-.01-.55-.01-.19 0-.5.07-.76.36-.26.29-1 1-1 2.42 0 1.42 1.03 2.8 1.17 3 .15.19 2.03 3.1 4.92 4.34.69.3 1.23.48 1.65.61.69.22 1.32.19 1.82.11.55-.08 1.7-.7 1.94-1.37.24-.67.24-1.25.17-1.37-.07-.12-.26-.19-.55-.34z"/></svg>
           </a>
         </div>
@@ -186,7 +201,7 @@
               <span class="price-off">Save 10%</span>
             </div>
           </div>
-          <a class="enquire-btn" href="https://chat.whatsapp.com/YOUR_GROUP_INVITE_LINK" target="_blank" rel="noopener" title="Chat on WhatsApp" aria-label="Chat on WhatsApp">
+          <a class="enquire-btn" href="https://wa.me/919911292210?text=Hi%20Nivarika%21%20I%27m%20interested%20in%20%2ACharger%20Plates%20%E2%80%94%20Set%20of%206%2A%20%28%E2%82%B93%2C150%29.%20Could%20you%20share%20more%20details%3F%20https%3A//www.nivarika.in/dinnerware%23charger-plates-set-of-6" target="_blank" rel="noopener" title="Chat on WhatsApp" aria-label="Chat on WhatsApp">
             <svg viewBox="0 0 32 32"><path d="M16.04 3C9.4 3 4 8.36 4 15c0 2.4.67 4.63 1.83 6.54L4 29l7.66-1.8A11.9 11.9 0 0 0 16.04 27C22.68 27 28 21.64 28 15S22.68 3 16.04 3zm0 21.6c-2 0-3.87-.55-5.47-1.5l-.39-.23-4.55 1.07 1.1-4.44-.26-.4A9.5 9.5 0 0 1 6.4 15c0-5.3 4.33-9.6 9.64-9.6 5.32 0 9.64 4.3 9.64 9.6s-4.32 9.6-9.64 9.6zm5.3-7.19c-.29-.15-1.7-.84-1.96-.93-.26-.1-.45-.15-.64.14-.19.29-.74.93-.9 1.12-.17.19-.33.22-.62.07-.29-.15-1.2-.44-2.29-1.4-.85-.75-1.42-1.68-1.59-1.97-.17-.29-.02-.44.13-.59.13-.13.29-.34.44-.5.15-.17.19-.29.29-.48.1-.19.05-.36-.02-.5-.07-.15-.64-1.54-.88-2.11-.23-.55-.47-.48-.64-.49-.17-.01-.36-.01-.55-.01-.19 0-.5.07-.76.36-.26.29-1 1-1 2.42 0 1.42 1.03 2.8 1.17 3 .15.19 2.03 3.1 4.92 4.34.69.3 1.23.48 1.65.61.69.22 1.32.19 1.82.11.55-.08 1.7-.7 1.94-1.37.24-.67.24-1.25.17-1.37-.07-.12-.26-.19-.55-.34z"/></svg>
           </a>
         </div>
@@ -207,7 +222,7 @@
               <span class="price-off">Save 22%</span>
             </div>
           </div>
-          <a class="enquire-btn" href="https://chat.whatsapp.com/YOUR_GROUP_INVITE_LINK" target="_blank" rel="noopener" title="Chat on WhatsApp" aria-label="Chat on WhatsApp">
+          <a class="enquire-btn" href="https://wa.me/919911292210?text=Hi%20Nivarika%21%20I%27m%20interested%20in%20%2AComplete%20Dining%20Set%20%E2%80%94%2032pc%2A%20%28%E2%82%B98%2C999%29.%20Could%20you%20share%20more%20details%3F%20https%3A//www.nivarika.in/dinnerware%23complete-dining-set-32pc" target="_blank" rel="noopener" title="Chat on WhatsApp" aria-label="Chat on WhatsApp">
             <svg viewBox="0 0 32 32"><path d="M16.04 3C9.4 3 4 8.36 4 15c0 2.4.67 4.63 1.83 6.54L4 29l7.66-1.8A11.9 11.9 0 0 0 16.04 27C22.68 27 28 21.64 28 15S22.68 3 16.04 3zm0 21.6c-2 0-3.87-.55-5.47-1.5l-.39-.23-4.55 1.07 1.1-4.44-.26-.4A9.5 9.5 0 0 1 6.4 15c0-5.3 4.33-9.6 9.64-9.6 5.32 0 9.64 4.3 9.64 9.6s-4.32 9.6-9.64 9.6zm5.3-7.19c-.29-.15-1.7-.84-1.96-.93-.26-.1-.45-.15-.64.14-.19.29-.74.93-.9 1.12-.17.19-.33.22-.62.07-.29-.15-1.2-.44-2.29-1.4-.85-.75-1.42-1.68-1.59-1.97-.17-.29-.02-.44.13-.59.13-.13.29-.34.44-.5.15-.17.19-.29.29-.48.1-.19.05-.36-.02-.5-.07-.15-.64-1.54-.88-2.11-.23-.55-.47-.48-.64-.49-.17-.01-.36-.01-.55-.01-.19 0-.5.07-.76.36-.26.29-1 1-1 2.42 0 1.42 1.03 2.8 1.17 3 .15.19 2.03 3.1 4.92 4.34.69.3 1.23.48 1.65.61.69.22 1.32.19 1.82.11.55-.08 1.7-.7 1.94-1.37.24-.67.24-1.25.17-1.37-.07-.12-.26-.19-.55-.34z"/></svg>
           </a>
         </div>
@@ -251,9 +266,9 @@
     <div>
       <h4>Contact</h4>
       <ul>
-        <li>+91 98 4021 6600</li>
-        <li>hello@nivarika.com</li>
-        <li>www.nivarika.com</li>
+        <li>+91 99112 92210</li>
+        <li>hello@nivarika.in</li>
+        <li>www.nivarika.in</li>
       </ul>
     </div>
   </div>
@@ -271,6 +286,7 @@
 <nav class="mobile-bottom-nav" aria-label="Quick navigation">
   <a href="index.html" aria-label="Home"><span aria-hidden="true">⌂</span>Home</a>
   <a href="index.html#glassware" aria-label="Shop"><span aria-hidden="true">◇</span>Shop</a>
+  <button type="button" data-open-search aria-label="Search products"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.2" y2="16.2" stroke-linecap="round"/></svg>Search</button>
   <button type="button" data-open-saved aria-label="Saved items"><span class="nav-icon" aria-hidden="true">&#9825;<span class="nav-badge" data-saved-count hidden>0</span></span>Saved</button>
   <a href="https://chat.whatsapp.com/YOUR_GROUP_INVITE_LINK" target="_blank" rel="noopener" aria-label="Chat on WhatsApp"><span aria-hidden="true">◌</span>Chat</a>
 </nav>
@@ -408,6 +424,7 @@
 </script>
 
 <script src="media/js/saved.js"></script>
+<script src="media/js/search.js"></script>
 <script src="media/js/store.js"></script>
 
 </body>

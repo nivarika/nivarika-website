@@ -99,12 +99,12 @@
      can jump straight back to that piece, even from another page. */
 
   var drawer = document.createElement('div');
-  drawer.className = 'saved-drawer';
+  drawer.className = 'saved-drawer sheet-overlay';
   drawer.setAttribute('role', 'dialog');
   drawer.setAttribute('aria-modal', 'true');
   drawer.setAttribute('aria-label', 'Saved items');
   drawer.innerHTML =
-    '<div class="saved-drawer-sheet">' +
+    '<div class="sheet-panel">' +
       '<div class="saved-drawer-head">' +
         '<h2>Saved for Later</h2>' +
         '<button type="button" class="saved-drawer-close" aria-label="Close saved items">&times;</button>' +
